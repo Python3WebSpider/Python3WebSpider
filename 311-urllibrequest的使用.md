@@ -21,7 +21,20 @@ print(response.read().decode('utf-8'))
 
 接下来我们看下它返回的到底是什么，利用`type`函数输出response的类型。
 
+```python
+# coding=utf-8
+import urllib.request
 
+response = urllib.request.urlopen('https://www.python.org')
+print(type(response))
+```
+
+输出结果
+
+```
+<class 'http.client.HTTPResponse'>
+
+```
 
 
 
