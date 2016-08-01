@@ -65,6 +65,26 @@ nginx
 
 可见，三个输出分别输出了响应的状态码，响应的头信息，以及通过传递一个参数获取了Server的类型。
 
+利用以上最基本的urlopen方法，我们可以完成最基本的简单网页的GET请求抓取。
+
+如果我们想给链接传递一些参数该怎么实现呢？我们首先看一下urlopen()函数的API。
+
+```python
+urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)
+```
+
+可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data,timeout等等。
+
+
+
+
+
+
+
+
+
+
+
 
 
 
