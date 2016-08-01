@@ -7,9 +7,10 @@ urllib.request模块提供了最基本的构造HTTP请求的方法，利用它�
 
 ```python
 # coding=utf-8
-​
+
 import urllib.request
 response = urllib.request.urlopen('http://www.baidu.com/')
 print(type(response))
 print(response.read().decode('utf-8'))
 ```
+
