@@ -37,14 +37,31 @@ print(type(response))
 
 ```
 
-通过输出结果可以发现它是一个HTTPResposne类型的对象，它主要包含的方法有`read()`,`readinto()`,`getheader()`,`getheaders()`,`fileno()`等函数和`msg`,`version`,`status`,`reason`,`debuglevel`,`closed`等属性。
+通过输出结果可以发现它是一个HTTPResposne类型的对象，它主要包含的方法有`read()`,`readinto()`,`getheader(name)`,`getheaders()`,`fileno()`等函数和`msg`,`version`,`status`,`reason`,`debuglevel`,`closed`等属性。
 得到这个对象之后，赋值为response，然后就可以用response调用这些方法和属性，得到返回结果的一系列信息。
 
 例如`response.read()`就可以得到返回的网页内容，`response.status`就可以得到返回结果的状态码，如200代表请求成功，404代表网页未找到等。
 
+下面再来一个实例感受一下
 
+```
+# coding=utf-8
+import urllib.request
 
+response = urllib.request.urlopen('https://www.python.org')
+print(response.status)
+print(response.getheaders())
+print(response.getheader('Server'))
+```
 
+运行结果
+
+```
+200
+[('Server', 'nginx'), ('Content-Type', 'text/html; charset=utf-8'), ('X-Frame-Options', 'SAMEORIGIN'), ('X-Clacks-Overhead', 'GNU Terry Pratchett'), ('Content-Length', '47397'), ('Accept-Ranges', 'bytes'), ('Date', 'Mon, 01 Aug 2016 09:57:31 GMT'), ('Via', '1.1 varnish'), ('Age', '2473'), ('Connection', 'close'), ('X-Served-By', 'cache-lcy1125-LCY'), ('X-Cache', 'HIT'), ('X-Cache-Hits', '23'), ('Vary', 'Cookie'), ('Public-Key-Pins', 'max-age=600; includeSubDomains; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="5C8kvU039KouVrl52D0eZSGf4Onjo4Khs8tmyTlV3nU="; pin-sha256="5C8kvU039KouVrl52D0eZSGf4Onjo4Khs8tmyTlV3nU="; pin-sha256="lCppFqbkrlJ3EcVFAkeip0+44VaoJUymbnOaEUk7tEU="; pin-sha256="TUDnr0MEoJ3of7+YliBMBVFB4/gJsv5zO7IxD9+YoWI="; pin-sha256="x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4=";'), ('Strict-Transport-Security', 'max-age=63072000; includeSubDomains')]
+nginx
+
+```
 
 
 
