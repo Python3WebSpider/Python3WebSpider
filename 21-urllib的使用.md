@@ -11,7 +11,9 @@ urllib中包括了四个模块，包括urllib.request,urllib.error,urllib.parse,
 * urllib.parse用来解析和处理URL   
 * urllib.robotparse用来解析页面的robots.txt文件
  
-可见其中最主要的库便是urllib.request，下面会对其进行详细的介绍。
+可见其中最主要的库便是urllib.request。
+
+下面会对其进行详细的介绍。
 
 
 
