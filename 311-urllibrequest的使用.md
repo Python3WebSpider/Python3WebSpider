@@ -30,7 +30,7 @@ response = urllib.request.urlopen('https://www.python.org')
 print(type(response))
 ```
 
-输出结果
+输出结果如下：
 
 ```
 <class 'http.client.HTTPResponse'>
@@ -42,7 +42,7 @@ print(type(response))
 
 例如`response.read()`就可以得到返回的网页内容，`response.status`就可以得到返回结果的状态码，如200代表请求成功，404代表网页未找到等。
 
-下面再来一个实例感受一下
+下面再来一个实例感受一下。
 
 ```
 # coding=utf-8
@@ -54,7 +54,7 @@ print(response.getheaders())
 print(response.getheader('Server'))
 ```
 
-运行结果
+运行结果如下：
 
 ```
 200
@@ -73,7 +73,7 @@ nginx
 urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)
 ```
 
-可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data,timeout等等。
+可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data(附加参数),timeout(超时时间)等等。
 
 
 
