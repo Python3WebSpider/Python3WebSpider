@@ -1,4 +1,4 @@
-# Urlib的使用
+# Urllib的使用
 
 在Python2版本中，有urllib和urlib2两个库可以用来实现request的发送。而在Python3中，已经不存在urllib2这个库了，统一为urllib。
 
@@ -11,9 +11,9 @@ urllib中包括了四个模块，包括urllib.request,urllib.error,urllib.parse,
 * urllib.parse用来解析和处理URL   
 * urllib.robotparse用来解析页面的robots.txt文件
  
-可见其中最主要的库便是urllib.request。
+可见其中模拟请求使用的最主要的库便是urllib.request，异常处理用urllib.error库。
 
-下面会对其进行详细的介绍。
+下面会对它们进行详细的介绍。
 
 
 
