@@ -15,6 +15,6 @@ print(response.read().decode('utf-8'))
 
 看一下运行结果。
 
-
+![](assets/3-1-1.png)
 
 真正的代码只有两行，我们便完成了Python官网的抓取。
