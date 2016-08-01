@@ -8,13 +8,12 @@ urllib中包括了四个模块，包括urllib.request,urllib.error,urllib.parse,
 
 * urllib.request可以用来发送request和获取request的结果
 * urllib.error包含了urllib.request产生的异常
-* urllib.parse用来解析和处理URL
+* urllib.parse用来解析和处理URL   
 * urllib.robotparse用来解析页面的robots.txt文件
-
+ 
 可见其中模拟请求使用的最主要的库便是urllib.request，异常处理用urllib.error库。
 
-下面会对它们一一进行详细的介绍。
-
+下面会对它们进行详细的介绍。
 
 
 
