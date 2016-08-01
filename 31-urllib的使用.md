@@ -13,7 +13,7 @@ urllib中包括了四个模块，包括urllib.request,urllib.error,urllib.parse,
  
 可见其中模拟请求使用的最主要的库便是urllib.request，异常处理用urllib.error库。
 
-下面会对它们进行详细的介绍。
+下面会对它们一一进行详细的介绍。
 
 
 
