@@ -5,3 +5,11 @@ urllib.request模块提供了最基本的构造HTTP请求的方法，利用它�
 好，那么首先我们来感受一下它的强大之处，以百度为例，我们来把百度这个网页抓下来。
 
 
+```python
+# coding=utf-8
+​
+import urllib.request
+response = urllib.request.urlopen('http://www.baidu.com/')
+print(type(response))
+print(response.read().decode('utf-8'))
+```
