@@ -303,33 +303,53 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 
 它们怎么来使用，不用着急，下面会有实例为你演示。
 
-另外一个比较重要的就是`OpenerDirector`，我们可以称之为`opener`，我们之前用过`urllib.request.urlopen()`这个方法，实际上它就是一个`opener`。 
+另外一个比较重要的就是`OpenerDirector`，我们可以称之为`Opener`，我们之前用过`urllib.request.urlopen()`这个方法，实际上它就是一个`Opener`。 
 
-那么为什么要引入`opener`呢？因为我们需要实现更高级的功能，之前我们使用的`Request`、`urlopen()`相当于类库为你封装好了极其常用的请求方法，利用它们两个我们就可以完成基本的请求，但是现在不一样了，我们需要实现更高级的功能，所以我们需要深入一层，使用更上层的实例来完成我们的操作。所以，在这里我们就用到了比调用`urlopen()`的对象的更普遍的对象，也就是`opener`。
+那么为什么要引入`Opener`呢？因为我们需要实现更高级的功能，之前我们使用的`Request`、`urlopen()`相当于类库为你封装好了极其常用的请求方法，利用它们两个我们就可以完成基本的请求，但是现在不一样了，我们需要实现更高级的功能，所以我们需要深入一层，使用更上层的实例来完成我们的操作。所以，在这里我们就用到了比调用`urlopen()`的对象的更普遍的对象，也就是`Opener`。
 
+`Opener`可以使用`open()`方法，返回的类型和`urlopen()`如出一辙。那么它和`Handler`有什么关系？简而言之，就是利用`Handler`来构建`Opener`。
 
+我们先用一个实例来感受一下：
 
+```python
+# coding=utf-8
+import urllib.request
 
+auth_handler = urllib.request.HTTPBasicAuthHandler()
+auth_handler.add_password(realm='PDQ Application',
+                          uri='https://mahler:8092/site-updates.py',
+                          user='klem',
+                          passwd='kadidd!ehopper')
+opener = urllib.request.build_opener(auth_handler)
+urllib.request.install_opener(opener)
+urllib.request.urlopen('http://www.example.com/login.html')
+```
 
+此处代码为实例代码，用于说明`Handler`和`Opener`的使用方法。
 
+在这里，首先实例化了一个`HTTPBasicAuthHandler`对象，然后利用`add_password()`添加进去用户名和密码，相当于建立了一个处理认证的处理器。
 
+接下来利用`urllib.request.build_opener()`方法来利用这个处理器构建一个`Opener`，那么这个`Opener`在发送请求的时候就具备了认证功能了。接下来利用`Opener`的`open()`方法打开链接，就可以完成认证了。
 
+如果添加代理，可以这样做：
 
+```python
+# coding=utf-8
+import urllib.request
 
+proxy_handler = urllib.request.ProxyHandler({
+    'http': 'http://218.202.111.10:80',
+    'https': 'https://180.250.163.34:8888'
+})
+opener = urllib.request.build_opener(proxy_handler)
+response = opener.open('https://www.baidu.com')
+print(response.read())
+```
 
+此处代码为实例代码，用于说明代理的设置方法，代理可能已经失效。
 
+在这里使用了`ProxyHandler`，`ProxyHandler`的参数是一个字典，key是协议类型，比如`http`还是`https`等，value是代理链接，可以添加多个代理。
 
-
-
-
-
-
-
-
-
-
-
-
-
+然后利用`build_opener()`方法利用这个`Handler`构造一个`Opener`，然后发送请求即可。
 
 
