@@ -287,12 +287,12 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 
 简而言之你可以把它理解为各种处理器，有专门处理登录验证的，有处理`Cookies`的，有处理代理设置的，利用它们我们几乎可以做到任何`HTTP`请求中所有的事情。
 
+首先介绍下`urllib.request.BaseHandler`，它是所有其他`Handler`的父类，它提供了最基本的`Handler`的方法，例如`default_open()`、`protocol_request()`等。
 
+接下来就有各种`Handler`类继承这个`BaseHandler`，列举如下：
 
-
-
-
-
-
-
-
+* `HTTPDefaultErrorHandler`用于处理HTTP响应错误，错误都会抛出`HTTPError`类型的异常。
+* `HTTPRedirectHandler`用于处理重定向。
+* `HTTPCookieProcessor`用于处理`Cookie`。
+* `ProxyHandler`用于设置代理，默认代理为空。
+* `HTTPPasswordMgr`用于管理密码，它维护了用户名密码的映射表。
