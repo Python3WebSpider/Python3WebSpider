@@ -186,6 +186,23 @@ TIME OUT
 
 `cafile`和`capath`两个参数是指定CA证书和它的路径，这个在请求`HTTPS`链接时会有用。
 
+`cadefault`参数现在已经弃用了，默认为`False`。
+
+以上讲解了`urlopen()`方法的用法，通过这个最基本的函数可以完成简单的请求和网页抓取，如需详细了解，可以参见官方文档。
+
+> [https://docs.python.org/3/library/urllib.request.html](https://docs.python.org/3/library/urllib.request.html)
+
+#### urllib.request.Request的使用
+
+
+
+
+
+
+
+
+
+
 
 
 
