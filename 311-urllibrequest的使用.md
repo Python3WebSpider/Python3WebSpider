@@ -66,7 +66,7 @@ nginx
 可见，三个输出分别输出了响应的状态码，响应的头信息，以及通过传递一个参数获取了Server的类型。
 
 
-### urllib.request.urlopen()详解
+#### urllib.request.urlopen()详解
 
 利用以上最基本的urlopen方法，我们可以完成最基本的简单网页的GET请求抓取。
 
@@ -77,6 +77,8 @@ urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, c
 ```
 
 可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data（附加参数），timeout（超时时间）等等。
+
+##### data参数
 
 data参数是可选的，如果要添加data，它要是字节流编码格式的内容，即bytes类型，通过bytes函数可以进行转化，另外如果你传递了这个data参数，它的请求方式就不再是GET方式请求，而是POST。
 
@@ -123,7 +125,7 @@ print(response.read())
 
 我们传递的参数出现在了`form`中，这表明是模拟了表单提交的方式，以POST方式传输数据。
 
-
+##### timeout参数
 
 
 
