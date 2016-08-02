@@ -194,7 +194,7 @@ TIME OUT
 
 #### urllib.request.Request的使用
 
-
+由上我们知道利用`urlopen()`方法可以实现最基本的请求发起，但这几个简单的参数并不足以构建一个完整的请求，如果请求中需要加入`header`、`host`等信息，我们就需要利用更强大的`Request`类来构建一个请求。
 
 
 
