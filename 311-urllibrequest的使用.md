@@ -270,7 +270,14 @@ print(response.read().decode('utf-8'))
 
 通过观察结果可以发现，我们成功设置了`data`，`headers`以及`method`。
 
+另外`headers`也可以用`add_header()`方法来添加。
 
+```python
+req = request.Request(url=url, data=data, method='POST')
+req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
+```
+
+如此一来，我们就可以更加方便地构造一个`Request`，实现请求的发送。
 
 
 
