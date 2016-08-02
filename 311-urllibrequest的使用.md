@@ -1,6 +1,6 @@
 ### urllib.request的使用
 
-#### urllib.request.urlopen
+#### urllib.request.urlopen()基本使用
 
 urllib.request模块提供了最基本的构造HTTP请求的方法，利用它可以模拟浏览器的一个请求发起过程，同时它还带有处理authenticaton\(授权验证\),（redirections）重定向,\(cookies\)浏览器Cookies以及其它内容。
 
@@ -64,6 +64,9 @@ nginx
 ```
 
 可见，三个输出分别输出了响应的状态码，响应的头信息，以及通过传递一个参数获取了Server的类型。
+
+
+### urllib.request.urlopen()详解
 
 利用以上最基本的urlopen方法，我们可以完成最基本的简单网页的GET请求抓取。
 
