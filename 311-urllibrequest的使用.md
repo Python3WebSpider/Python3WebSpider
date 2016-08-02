@@ -295,4 +295,21 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 * `HTTPRedirectHandler`用于处理重定向。
 * `HTTPCookieProcessor`用于处理`Cookie`。
 * `ProxyHandler`用于设置代理，默认代理为空。
-* `HTTPPasswordMgr`用于管理密码，它维护了用户名密码的映射表。
+* `HTTPPasswordMgr`用于管理密码，它维护了`(realm, uri) -> (user, password) `的映射表。
+* `HTTPPasswordMgrWithDefaultRealm`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
