@@ -279,5 +279,20 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 
 如此一来，我们就可以更加方便地构造一个`Request`，实现请求的发送。
 
+#### urllib.request高级特性
+
+大家有没有发现，在上面的过程中，我们虽然可以构造`Request`，但是一些更高级的操作，比如`Cookies`处理，代理该怎样来设置？
+
+接下来就需要更强大的工具`Handler`登场了。
+
+简而言之你可以把它理解为各种处理器，有专门处理登录验证的，有处理`Cookies`的，有处理代理设置的，利用它们我们几乎可以做到任何`HTTP`请求中所有的事情。
+
+
+
+
+
+
+
+
 
 
