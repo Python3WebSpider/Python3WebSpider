@@ -216,8 +216,13 @@ class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, u
 
 `headers`参数是一个字典，你可以在构造`Request`时通过`headers`参数传递，也可以通过调用`Request`对象的`add_header()`方法来添加请求头。请求头最常用的用法就是通过修改`User-Agent`来伪装浏览器，默认的`User-Agent`是`Python-urllib`，你可以通过修改它来伪装浏览器，比如要伪装火狐浏览器，你可以把它设置为`Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11`
 
+`origin_req_host`指的是请求方的`host`名称或者`IP`地址。
 
+`unverifiable`指的是这个请求是否是无法验证的，默认是`False`。意思就是说用户没有足够权限来选择接收这个请求的结果。例如我们请求一个HTML文档中的图片，但是我们没有自动抓取图像的权限，这时`unverifiable`的值就是`True`。
 
+`method`是一个字符串，它用来指示请求使用的方法，比如`GET`，`POST`，`PUT`等等。
+
+下面我们传入多个参数构建一个`Request`来感受一下。
 
 
 
