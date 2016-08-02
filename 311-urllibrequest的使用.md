@@ -34,7 +34,6 @@ print(type(response))
 
 ```
 <class 'http.client.HTTPResponse'>
-
 ```
 
 通过输出结果可以发现它是一个`HTTPResposne`类型的对象，它主要包含的方法有`read()`、`readinto()`、`getheader(name)`、`getheaders()`、`fileno()`等函数和`msg`、`version`、`status`、`reason`、`debuglevel`、`closed`等属性。
@@ -60,7 +59,6 @@ print(response.getheader('Server'))
 200
 [('Server', 'nginx'), ('Content-Type', 'text/html; charset=utf-8'), ('X-Frame-Options', 'SAMEORIGIN'), ('X-Clacks-Overhead', 'GNU Terry Pratchett'), ('Content-Length', '47397'), ('Accept-Ranges', 'bytes'), ('Date', 'Mon, 01 Aug 2016 09:57:31 GMT'), ('Via', '1.1 varnish'), ('Age', '2473'), ('Connection', 'close'), ('X-Served-By', 'cache-lcy1125-LCY'), ('X-Cache', 'HIT'), ('X-Cache-Hits', '23'), ('Vary', 'Cookie'), ('Public-Key-Pins', 'max-age=600; includeSubDomains; pin-sha256="WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="; pin-sha256="5C8kvU039KouVrl52D0eZSGf4Onjo4Khs8tmyTlV3nU="; pin-sha256="5C8kvU039KouVrl52D0eZSGf4Onjo4Khs8tmyTlV3nU="; pin-sha256="lCppFqbkrlJ3EcVFAkeip0+44VaoJUymbnOaEUk7tEU="; pin-sha256="TUDnr0MEoJ3of7+YliBMBVFB4/gJsv5zO7IxD9+YoWI="; pin-sha256="x4QzPSC810K5/cMjb05Qm4k3Bw5zBn4lTdO/nEW/Td4=";'), ('Strict-Transport-Security', 'max-age=63072000; includeSubDomains')]
 nginx
-
 ```
 
 可见，三个输出分别输出了响应的状态码，响应的头信息，以及通过传递一个参数获取了`Server`的类型。
@@ -92,7 +90,6 @@ import urllib.request
 data = bytes(urllib.parse.urlencode({'word': 'hello'}), encoding='utf8')
 response = urllib.request.urlopen('http://httpbin.org/post', data=data)
 print(response.read())
-
 ```
 在这里我们传递了一个参数`word`，值是`hello`。它需要被转码成`bytes`（字节流）类型。其中转字节流采用了`bytes()`方法，第一个参数需要是`str`(字符串)类型，需要用`urllib.parse.urlencode()`方法来将参数字典转化为字符串。第二个参数指定编码格式，在这里指定为`utf8`。
 
@@ -120,7 +117,6 @@ print(response.read())
  "origin": "123.124.23.253",
  "url": "http://httpbin.org/post"
 }
-
 ```
 
 我们传递的参数出现在了`form`中，这表明是模拟了表单提交的方式，以`POST`方式传输数据。
@@ -147,7 +143,6 @@ During handling of the above exception, another exception occurred:
 Traceback (most recent call last): File "/var/py/python/urllibtest.py", line 4, in <module> response = urllib.request.urlopen('http://httpbin.org/get', timeout=1)
 ...
 urllib.error.URLError: <urlopen error timed out>
-
 ```
 
 在这里我们设置了超时时间是1秒，程序1秒过后服务器依然没有响应，于是抛出了`urllib.error.URLError`异常，错误原因是`timed out`。
