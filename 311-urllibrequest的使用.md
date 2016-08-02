@@ -191,14 +191,30 @@ TIME OUT
 
 由上我们知道利用`urlopen()`方法可以实现最基本的请求发起，但这几个简单的参数并不足以构建一个完整的请求，如果请求中需要加入`header`、`host`等信息，我们就需要利用更强大的`Request`类来构建一个请求。
 
+首先我们用一个实例来感受一下`Request`的用法。
 
+```python
+# coding=utf-8
+import urllib.request
 
+request = urllib.request.Request('https://python.org')
+response = urllib.request.urlopen(request)
+print(response.read().decode('utf-8'))
+```
 
+可以发现，我们依然是用`urlopen()`方法来发送这个请求，只不过这次`urlopen()`方法的参数不再是一个URL，而是一个`Request`，通过构造这个这个数据结构，一方面我们可以将请求独立成一个对象，另一方面可配置参数更加丰富和灵活。
 
+下面我们看一下`Request`都可以通过怎样的参数来构造，它的构造方法如下。
 
+```python
+class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)
 
+```
+第一个参数是请求链接，这个是必传参数，其他的都是可选参数。
 
+`data`参数如果要传必须传`bytes`（字节流）类型的，如果是一个字典，可以先用`urllib.parse.urlencode()`编码。
 
+`headers`参数是一个字典，你可以在构造`Request`时通过`headers`参数传递，也可以通过调用`Request`对象的`add_header()`方法来添加请求头。请求头最常用的用法就是通过修改`User-Agent`来伪装浏览器，默认的`User-Agent`是`Python-urllib`，你可以通过修改它来伪装浏览器，比如要伪装火狐浏览器，你可以把它设置为`Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11`
 
 
 
