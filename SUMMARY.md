@@ -7,4 +7,5 @@
 * [第三章 基本库的使用](第三章-基本库的使用.md)
 * [3.1 urllib的使用](31-urllib的使用.md)
 * [3.1.1 urllib.request的使用](311-urllibrequest的使用.md)
+* [3.1.2 urllib.error的处理](312-urlliberror的处理.md)
 
