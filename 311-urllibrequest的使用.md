@@ -295,8 +295,28 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 * `HTTPRedirectHandler`用于处理重定向。
 * `HTTPCookieProcessor`用于处理`Cookie`。
 * `ProxyHandler`用于设置代理，默认代理为空。
-* `HTTPPasswordMgr`用于管理密码，它维护了`(realm, uri) -> (user, password) `的映射表。
-* `HTTPPasswordMgrWithDefaultRealm`
+* `HTTPPasswordMgr`用于管理密码，它维护了用户名密码的表。
+* `HTTPBasicAuthHandler`用于管理认证，如果一个链接打开时需要认证，那么可以用它来解决认证问题。
+另外还有其他的`Handler`，可以参考官方文档。
+
+> [https://docs.python.org/3/library/urllib.request.html#urllib.request.BaseHandler](https://docs.python.org/3/library/urllib.request.html#urllib.request.BaseHandler)
+
+它们怎么来使用，不用着急，下面会有实例为你演示。
+
+另外一个比较重要的就是`OpenerDirector`，我们可以称之为`opener`，我们之前用过`urllib.request.urlopen()`这个方法，实际上它就是一个`opener`。 
+
+那么为什么要引入`opener`呢？因为我们需要实现更高级的功能，之前我们使用的`Request`、`urlopen()`相当于类库为你封装好了极其常用的请求方法，利用它们两个我们就可以完成基本的请求，但是现在不一样了，我们需要实现更高级的功能，所以我们需要深入一层，使用更上层的实例来完成我们的操作。所以，在这里我们就用到了比调用`urlopen()`的对象的更普遍的对象，也就是`opener`。
+
+
+
+
+
+
+
+
+
+
+
 
 
 
