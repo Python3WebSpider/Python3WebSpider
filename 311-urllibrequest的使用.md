@@ -73,18 +73,26 @@ nginx
 urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)
 ```
 
-可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data(附加参数),timeout(超时时间)等等。
+可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data（附加参数），timeout（超时时间）等等。
 
 data参数是可选的，如果要添加data，它要是字节流编码格式的内容，即bytes类型，通过bytes函数可以进行转化，另外如果你传递了这个data参数，它的请求方式就不再是GET方式请求，而是POST。
 
 下面用一个实例来感受一下。
 
 ```
-# coding=utf-8import urllib.parseimport urllib.requestdata = bytes(urllib.parse.urlencode({'word': 'hello'}), encoding='utf8')response = urllib.request.urlopen('http://httpbin.org/post', data=data)print(response.read())
+# coding=utf-8
+import urllib.parse
+import urllib.request
+
+data = bytes(urllib.parse.urlencode({'word': 'hello'}), encoding='utf8')
+response = urllib.request.urlopen('http://httpbin.org/post', data=data)
+print(response.read())
 
 ```
+在这里我们传递了一个参数`word`，值是`hello`。它需要被转码成`bytes`（字节流）类型。其中转字节流采用了`bytes()`方法，第一个参数需要是`str`(字符串)类型，需要用`urllib.parse.urlencode()`方法来将参数字典转化为字符串。第二个参数指定编码格式，在这里指定为`utf8`。
 
-我们这次提交的网址是`httpbin.org`，它可以提供http请求测试。`http://httpbin.org/post`这个地址可以用来测试POST请求，它可以输出请求和响应信息，其中就包含我们传递的data参数。
+提交的网址是`httpbin.org`，它可以提供http请求测试。`http://httpbin.org/post`这个地址可以用来测试POST请求，它可以输出请求和响应信息，其中就包含我们传递的data参数。
+
 
 运行结果如下：
 
