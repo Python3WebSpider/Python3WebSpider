@@ -44,7 +44,7 @@ print(type(response))
 
 下面再来一个实例感受一下。
 
-```
+```python
 # coding=utf-8
 import urllib.request
 
@@ -84,7 +84,7 @@ data参数是可选的，如果要添加data，它要是字节流编码格式的
 
 下面用一个实例来感受一下。
 
-```
+```python
 # coding=utf-8
 import urllib.parse
 import urllib.request
@@ -101,7 +101,7 @@ print(response.read())
 
 运行结果如下：
 
-```
+```json
 {
  "args": {},
  "data": "",
@@ -126,6 +126,65 @@ print(response.read())
 我们传递的参数出现在了`form`中，这表明是模拟了表单提交的方式，以POST方式传输数据。
 
 ##### timeout参数
+
+timeout参数可以设置超时时间，单位为秒，意思就是如果请求超出了设置的这个时间还没有得到响应，就会抛出异常，如果不指定，就会使用全局默认时间。它支持HTTP、HTTPS、FTP请求。
+
+下面来用一个实例感受一下：
+
+```python
+# coding=utf-8
+import urllib.request
+
+response = urllib.request.urlopen('http://httpbin.org/get', timeout=1)
+print(response.read())
+```
+
+运行结果：
+
+```
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last): File "/var/py/python/urllibtest.py", line 4, in <module> response = urllib.request.urlopen('http://httpbin.org/get', timeout=1)
+...
+urllib.error.URLError: <urlopen error timed out>
+
+```
+
+在这里我们设置了超时时间是1秒，程序1秒过后服务器依然没有响应，于是抛出了`urllib.error.URLError`异常，错误原因是timed out。
+
+因此我们可以通过设置这个超时时间来控制一个网页如果长时间未响应就跳过它的抓取，利用`try,except`语句就可以实现这样的操作。
+
+```python
+# coding=utf-8
+import socket
+import urllib.request
+import urllib.error
+
+try:
+    response = urllib.request.urlopen('http://httpbin.org/get', timeout=0.1)
+except urllib.error.URLError as e:
+    if isinstance(e.reason, socket.timeout):
+        print('TIME OUT')
+```
+
+在这里我们请求了`http://httpbin.org/get`这个测试链接，设置了超时时间是0.1秒，然后捕获了
+`urllib.error.URLError`这个异常，然后判断异常原因是超时异常，就得出它确实是因为超时而报错，打印输出了`TIME OUT`，当然你也可以在这里做其他的处理。
+
+运行结果如下：
+
+```
+TIME OUT
+```
+
+常理来说，0.1秒内基本不可能得到服务器响应，因此输出了`TIME OUT`的提示。
+
+这样，我们可以通过设置`timeout`这个参数来实现超时处理，有时还是很有用的。
+
+
+
+
+
+
 
 
 
