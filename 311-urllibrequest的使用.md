@@ -2,7 +2,7 @@
 
 #### urllib.request.urlopen()基本使用
 
-urllib.request模块提供了最基本的构造HTTP请求的方法，利用它可以模拟浏览器的一个请求发起过程，同时它还带有处理authenticaton\(授权验证\),（redirections）重定向,\(cookies\)浏览器Cookies以及其它内容。
+`urllib.request`模块提供了最基本的构造`HTTP`请求的方法，利用它可以模拟浏览器的一个请求发起过程，同时它还带有处理`authenticaton`（授权验证），`redirections`（重定向)，`cookies`(浏览器Cookies）以及其它内容。
 
 好，那么首先我们来感受一下它的强大之处，以Python官网为例，我们来把这个网页抓下来。
 
@@ -20,7 +20,7 @@ print(response.read().decode('utf-8'))
 
 真正的代码只有两行，我们便完成了Python官网的抓取，输出了网页的源代码，得到了源代码之后呢？你想要的链接、图片地址、文本信息不就都可以提取出来了吗？
 
-接下来我们看下它返回的到底是什么，利用`type`函数输出response的类型。
+接下来我们看下它返回的到底是什么，利用`type`函数输出`response`的类型。
 
 ```python
 # coding=utf-8
@@ -37,8 +37,8 @@ print(type(response))
 
 ```
 
-通过输出结果可以发现它是一个HTTPResposne类型的对象，它主要包含的方法有`read()`,`readinto()`,`getheader(name)`,`getheaders()`,`fileno()`等函数和`msg`,`version`,`status`,`reason`,`debuglevel`,`closed`等属性。
-得到这个对象之后，赋值为response，然后就可以用response调用这些方法和属性，得到返回结果的一系列信息。
+通过输出结果可以发现它是一个`HTTPResposne`类型的对象，它主要包含的方法有`read()`、`readinto()`、`getheader(name)`、`getheaders()`、`fileno()`等函数和`msg`、`version`、`status`、`reason`、`debuglevel`、`closed`等属性。
+得到这个对象之后，赋值为`response`，然后就可以用`response`调用这些方法和属性，得到返回结果的一系列信息。
 
 例如`response.read()`就可以得到返回的网页内容，`response.status`就可以得到返回结果的状态码，如200代表请求成功，404代表网页未找到等。
 
@@ -63,24 +63,24 @@ nginx
 
 ```
 
-可见，三个输出分别输出了响应的状态码，响应的头信息，以及通过传递一个参数获取了Server的类型。
+可见，三个输出分别输出了响应的状态码，响应的头信息，以及通过传递一个参数获取了`Server`的类型。
 
 
 #### urllib.request.urlopen()详解
 
-利用以上最基本的urlopen方法，我们可以完成最基本的简单网页的GET请求抓取。
+利用以上最基本的`urlopen()`方法，我们可以完成最基本的简单网页的`GET`请求抓取。
 
-如果我们想给链接传递一些参数该怎么实现呢？我们首先看一下urlopen()函数的API。
+如果我们想给链接传递一些参数该怎么实现呢？我们首先看一下`urlopen()`函数的API。
 
 ```python
 urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)
 ```
 
-可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data（附加参数），timeout（超时时间）等等。
+可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如`data`（附加参数），`timeout`（超时时间）等等。
 
 ##### data参数
 
-data参数是可选的，如果要添加data，它要是字节流编码格式的内容，即bytes类型，通过bytes函数可以进行转化，另外如果你传递了这个data参数，它的请求方式就不再是GET方式请求，而是POST。
+`data`参数是可选的，如果要添加`data`，它要是字节流编码格式的内容，即`bytes`类型，通过`bytes()`函数可以进行转化，另外如果你传递了这个`data`参数，它的请求方式就不再是`GET`方式请求，而是`POST`。
 
 下面用一个实例来感受一下。
 
@@ -96,7 +96,7 @@ print(response.read())
 ```
 在这里我们传递了一个参数`word`，值是`hello`。它需要被转码成`bytes`（字节流）类型。其中转字节流采用了`bytes()`方法，第一个参数需要是`str`(字符串)类型，需要用`urllib.parse.urlencode()`方法来将参数字典转化为字符串。第二个参数指定编码格式，在这里指定为`utf8`。
 
-提交的网址是`httpbin.org`，它可以提供http请求测试。`http://httpbin.org/post`这个地址可以用来测试POST请求，它可以输出请求和响应信息，其中就包含我们传递的data参数。
+提交的网址是`httpbin.org`，它可以提供`HTTP`请求测试。`http://httpbin.org/post`这个地址可以用来测试`POST`请求，它可以输出请求和响应信息，其中就包含我们传递的`data`参数。
 
 
 运行结果如下：
@@ -123,11 +123,11 @@ print(response.read())
 
 ```
 
-我们传递的参数出现在了`form`中，这表明是模拟了表单提交的方式，以POST方式传输数据。
+我们传递的参数出现在了`form`中，这表明是模拟了表单提交的方式，以`POST`方式传输数据。
 
 ##### timeout参数
 
-timeout参数可以设置超时时间，单位为秒，意思就是如果请求超出了设置的这个时间还没有得到响应，就会抛出异常，如果不指定，就会使用全局默认时间。它支持HTTP、HTTPS、FTP请求。
+`timeout`参数可以设置超时时间，单位为秒，意思就是如果请求超出了设置的这个时间还没有得到响应，就会抛出异常，如果不指定，就会使用全局默认时间。它支持`HTTP`、`HTTPS`、`FTP`请求。
 
 下面来用一个实例感受一下：
 
@@ -150,7 +150,7 @@ urllib.error.URLError: <urlopen error timed out>
 
 ```
 
-在这里我们设置了超时时间是1秒，程序1秒过后服务器依然没有响应，于是抛出了`urllib.error.URLError`异常，错误原因是timed out。
+在这里我们设置了超时时间是1秒，程序1秒过后服务器依然没有响应，于是抛出了`urllib.error.URLError`异常，错误原因是`timed out`。
 
 因此我们可以通过设置这个超时时间来控制一个网页如果长时间未响应就跳过它的抓取，利用`try,except`语句就可以实现这样的操作。
 
@@ -180,11 +180,11 @@ TIME OUT
 
 这样，我们可以通过设置`timeout`这个参数来实现超时处理，有时还是很有用的。
 
+##### 其他参数
 
+还有`context`参数，它必须是`ssl.SSLContext`类型，用来指定`SSL`设置。
 
-
-
-
+`cafile`和`capath`两个参数是指定CA证书和它的路径，这个在请求`HTTPS`链接时会有用。
 
 
 
