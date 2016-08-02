@@ -75,11 +75,42 @@ urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, c
 
 可以发现除了第一个参数可以传递URL之外，我们还可以传递其它的内容，比如data(附加参数),timeout(超时时间)等等。
 
+data参数是可选的，如果要添加data，它要是字节流编码格式的内容，即bytes类型，通过bytes函数可以进行转化，另外如果你传递了这个data参数，它的请求方式就不再是GET方式请求，而是POST。
 
+下面用一个实例来感受一下。
 
+```
+# coding=utf-8import urllib.parseimport urllib.requestdata = bytes(urllib.parse.urlencode({'word': 'hello'}), encoding='utf8')response = urllib.request.urlopen('http://httpbin.org/post', data=data)print(response.read())
 
+```
 
+我们这次提交的网址是`httpbin.org`，它可以提供http请求测试。`http://httpbin.org/post`这个地址可以用来测试POST请求，它可以输出请求和响应信息，其中就包含我们传递的data参数。
 
+运行结果如下：
+
+```
+{
+ "args": {},
+ "data": "",
+ "files": {},
+ "form": {
+ "word": "hello"
+ },
+ "headers": {
+ "Accept-Encoding": "identity",
+ "Content-Length": "10",
+ "Content-Type": "application/x-www-form-urlencoded",
+ "Host": "httpbin.org",
+ "User-Agent": "Python-urllib/3.5"
+ },
+ "json": null,
+ "origin": "123.124.23.253",
+ "url": "http://httpbin.org/post"
+}
+
+```
+
+我们传递的参数出现在了`form`中，这表明是模拟了表单提交的方式，以POST方式传输数据。
 
 
 
