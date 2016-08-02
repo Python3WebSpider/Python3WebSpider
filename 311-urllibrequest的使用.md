@@ -135,7 +135,7 @@ response = urllib.request.urlopen('http://httpbin.org/get', timeout=1)
 print(response.read())
 ```
 
-运行结果：
+运行结果如下：
 
 ```
 During handling of the above exception, another exception occurred:
@@ -189,7 +189,7 @@ TIME OUT
 
 #### urllib.request.Request的使用
 
-由上我们知道利用`urlopen()`方法可以实现最基本的请求发起，但这几个简单的参数并不足以构建一个完整的请求，如果请求中需要加入`header`、`host`等信息，我们就需要利用更强大的`Request`类来构建一个请求。
+由上我们知道利用`urlopen()`方法可以实现最基本的请求发起，但这几个简单的参数并不足以构建一个完整的请求，如果请求中需要加入`headers`等信息，我们就可以利用更强大的`Request`类来构建一个请求。
 
 首先我们用一个实例来感受一下`Request`的用法。
 
@@ -223,6 +223,52 @@ class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, u
 `method`是一个字符串，它用来指示请求使用的方法，比如`GET`，`POST`，`PUT`等等。
 
 下面我们传入多个参数构建一个`Request`来感受一下。
+
+```python
+# coding=utf-8
+from urllib import request, parse
+
+url = 'http://httpbin.org/post'
+headers = {
+    'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)',
+    'Host': 'httpbin.org'
+}
+dict = {
+    'name': 'Germey'
+}
+data = bytes(parse.urlencode(dict), encoding='utf8')
+req = request.Request(url=url, data=data, headers=headers, method='POST')
+response = request.urlopen(req)
+print(response.read().decode('utf-8'))
+```
+
+在这里我们通过四个参数构造了一个`Request`，`url`即请求链接，在`headers`中指定了`User-Agent`和`Host`，传递的参数`data`用了`urlencode()`和`bytes()`方法来转成字节流，另外指定了请求方式为`POST`。
+
+运行结果如下：
+
+```json
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {
+    "name": "Germey"
+  }, 
+  "headers": {
+    "Accept-Encoding": "identity", 
+    "Content-Length": "11", 
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "Host": "httpbin.org", 
+    "User-Agent": "Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)"
+  }, 
+  "json": null, 
+  "origin": "219.224.169.11", 
+  "url": "http://httpbin.org/post"
+}
+
+```
+
+通过观察结果可以发现，我们成功设置了`data`，`headers`以及`method`。
 
 
 
