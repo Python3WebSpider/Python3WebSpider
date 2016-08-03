@@ -93,7 +93,7 @@ from urllib import request,error
 try:
     response = request.urlopen('http://cuiqingcai.com/index.htm')
 except error.HTTPError as e:
-    print(e.reason, e.code, e.headers)
+    print(e.reason, e.code, e.headers, seq='\n')
 ```
 运行结果：
 
@@ -117,8 +117,20 @@ Link: <http://cuiqingcai.com/wp-json/>; rel="https://api.w.org/"
 
 因为`URLError`是`HTTPError`的父类，所以我们可以先选择捕获子类的错误，再去捕获父类的错误，更好的写法如下：
 
+```python
+# coding=utf-8
+from urllib import request, error
 
+try:
+    response = request.urlopen('http://cuiqingcai.com/index.htm')
+except error.HTTPError as e:
+    print(e.reason, e.code, e.headers, sep='\n')
+except error.URLError as e:
+    print(e.reason)
+else:
+    print('Request Successfully')
 
+```
 
 
 
