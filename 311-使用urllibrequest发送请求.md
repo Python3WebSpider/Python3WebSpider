@@ -41,7 +41,7 @@ print(type(response))
 
 例如`response.read()`就可以得到返回的网页内容，`response.status`就可以得到返回结果的状态码，如200代表请求成功，404代表网页未找到等。
 
-下面再来一个实例感受一下。
+下面再来一个实例感受一下：
 
 ```python
 # coding=utf-8
@@ -80,7 +80,7 @@ urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, c
 
 `data`参数是可选的，如果要添加`data`，它要是字节流编码格式的内容，即`bytes`类型，通过`bytes()`函数可以进行转化，另外如果你传递了这个`data`参数，它的请求方式就不再是`GET`方式请求，而是`POST`。
 
-下面用一个实例来感受一下。
+下面用一个实例来感受一下：
 
 ```python
 # coding=utf-8
@@ -125,7 +125,7 @@ print(response.read())
 
 `timeout`参数可以设置超时时间，单位为秒，意思就是如果请求超出了设置的这个时间还没有得到响应，就会抛出异常，如果不指定，就会使用全局默认时间。它支持`HTTP`、`HTTPS`、`FTP`请求。
 
-下面来用一个实例感受一下。
+下面来用一个实例感受一下：
 
 ```python
 # coding=utf-8
@@ -191,7 +191,7 @@ TIME OUT
 
 由上我们知道利用`urlopen()`方法可以实现最基本的请求发起，但这几个简单的参数并不足以构建一个完整的请求，如果请求中需要加入`headers`等信息，我们就可以利用更强大的`Request`类来构建一个请求。
 
-首先我们用一个实例来感受一下`Request`的用法。
+首先我们用一个实例来感受一下`Request`的用法：
 
 ```python
 # coding=utf-8
@@ -222,7 +222,7 @@ class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, u
 
 `method`是一个字符串，它用来指示请求使用的方法，比如`GET`，`POST`，`PUT`等等。
 
-下面我们传入多个参数构建一个`Request`来感受一下。
+下面我们传入多个参数构建一个`Request`来感受一下：
 
 ```python
 # coding=utf-8
@@ -309,7 +309,7 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 
 `Opener`可以使用`open()`方法，返回的类型和`urlopen()`如出一辙。那么它和`Handler`有什么关系？简而言之，就是利用`Handler`来构建`Opener`。
 
-我们先用一个实例来感受一下。
+我们先用一个实例来感受一下：
 
 ```python
 # coding=utf-8
