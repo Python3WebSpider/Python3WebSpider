@@ -125,7 +125,7 @@ print(response.read())
 
 `timeout`参数可以设置超时时间，单位为秒，意思就是如果请求超出了设置的这个时间还没有得到响应，就会抛出异常，如果不指定，就会使用全局默认时间。它支持`HTTP`、`HTTPS`、`FTP`请求。
 
-下面来用一个实例感受一下：
+下面来用一个实例感受一下。
 
 ```python
 # coding=utf-8
@@ -309,7 +309,7 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 
 `Opener`可以使用`open()`方法，返回的类型和`urlopen()`如出一辙。那么它和`Handler`有什么关系？简而言之，就是利用`Handler`来构建`Opener`。
 
-我们先用一个实例来感受一下：
+我们先用一个实例来感受一下。
 
 ```python
 # coding=utf-8

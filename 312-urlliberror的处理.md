@@ -8,7 +8,7 @@
 
 它具有一个属性`reason`，即返回错误的原因。
 
-下面用一个例子来感受一下。
+下面用一个实例来感受一下。
 
 ```python
 # coding=utf-8
@@ -85,7 +85,7 @@ Not Found
 | 504  | 网关超时      | 服务器作为网关或代理，但是没有及时从上游服务器收到请求。       |
 | 505  | HTTP版本不支持 | 服务器不支持请求中所用的 HTTP 协议版本。            |
 
-下面我们来用几个实例感受一下：
+下面我们来用几个实例感受一下。
 
 ```python
 # coding=utf-8
@@ -134,6 +134,46 @@ else:
 这样我们就可以做到先捕获`HTTPError`，获取它的错误码，错误原因，服务器响应头等详细信息。如果非`HTTPError`，再捕获`URLError`错误，输出错误原因。最后用`else`来处理正常的逻辑。
 
 在有时候`e.reason`返回的不一定是字符串，可能是一个对象。
+
+下面用一个实例来感受一下。
+
+```python
+# coding=utf-8
+import socket
+import urllib.request
+import urllib.error
+
+try:
+    response = urllib.request.urlopen('https://www.baidu.com', timeout=0.01)
+except urllib.error.URLError as e:
+    print(type(e.reason))
+    if isinstance(e.reason, socket.timeout):
+        print('TIME OUT')
+```
+在这里我们直接设置了超时时间来强制抛出`timeout`异常。
+
+运行结果如下： 
+
+```python
+<class 'socket.timeout'>
+TIME OUT
+```
+
+可以发现`e,reason`的类型是`socket.timeout`。所以我们可以用`isinstance()`方法来判断它的类型，做出更详细的异常判断。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
