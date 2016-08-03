@@ -85,17 +85,37 @@ Not Found
 | 504  | 网关超时      | 服务器作为网关或代理，但是没有及时从上游服务器收到请求。       |
 | 505  | HTTP版本不支持 | 服务器不支持请求中所用的 HTTP 协议版本。            |
 
+下面我们来用几个实例感受一下：
 
+```python
+# coding=utf-8
+from urllib import request,error
+try:
+    response = request.urlopen('http://cuiqingcai.com/index.htm')
+except error.HTTPError as e:
+    print(e.reason, e.code, e.headers)
+```
+运行结果：
 
+```
+Not Found
+404
+Server: nginx/1.4.6 (Ubuntu)
+Date: Wed, 03 Aug 2016 08:54:22 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: close
+X-Powered-By: PHP/5.5.9-1ubuntu4.14
+Vary: Cookie
+Expires: Wed, 11 Jan 1984 05:00:00 GMT
+Cache-Control: no-cache, must-revalidate, max-age=0
+Pragma: no-cache
+Link: <http://cuiqingcai.com/wp-json/>; rel="https://api.w.org/"
+```
 
+依然是同样的网址，在这里我们捕获了`HTTPError`，输出了错误原因、错误代号、服务器响应头。
 
-
-
-
-
-
-
-
+因为`URLError`是`HTTPError`的父类，所以我们可以先选择捕获子类的错误，再去捕获父类的错误，更好的写法如下：
 
 
 
