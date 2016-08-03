@@ -4,7 +4,7 @@
 
 常用的函数有`urllib.parse.urlparse()`。
 
-先用一个实例来感受一下。
+先用一个实例来感受一下：
 
 ```python
 # coding=utf-8
@@ -44,13 +44,13 @@ scheme://netloc/path;parameters?query#fragment
 urllib.parse.urlparse(urlstring, scheme='', allow_fragments=True)
 ```
 
-它有三个参数。
+它有三个参数：
 
 第一个参数`urlstring`是必填项，即待解析的`URL`。
 
 第二个参数`scheme`是默认的协议（比如`http`、`https`等），假如这个链接没有带协议信息，会将这个作为默认的协议。
 
-我们用一个实例感受一下。
+我们用一个实例感受一下：
 
 ```python
 # coding=utf-8
@@ -86,24 +86,43 @@ ParseResult(scheme='http', netloc='www.baidu.com', path='/index.html', params='u
 
 第三个参数`allow_fragments`是是否忽略`fragment`，如果它被设置为`False`，`fragment`部分就会被忽略，它会被解析为`path`、`parameters`或者`query`的一部分，`fragment`部分为空。
 
-返回结果是一个
+下面我们用一个实例感受一下：
 
+```python
+# coding=utf-8
+from urllib.parse import urlparse
 
+result = urlparse('http://www.baidu.com/index.html;user?id=5#comment', allow_fragments=False)
+print(result)
+```
 
+运行结果：
 
+```python
+ParseResult(scheme='http', netloc='www.baidu.com', path='/index.html', params='user', query='id=5#comment', fragment='')
 
+```
 
+假设链接中不包含`parameters`和`query`呢？
 
+再来一个实例：
 
+```python
+# coding=utf-8
+from urllib.parse import urlparse
 
+result = urlparse('http://www.baidu.com/index.html#comment', allow_fragments=False)
+print(result)
+```
 
+运行结果：
 
+```python
+ParseResult(scheme='http', netloc='www.baidu.com', path='/index.html#comment', params='', query='', fragment='')
 
+```
 
-
-
-
-
+可以发现当链接中不包含`params`和`query`时，`fragment`便会被解析为`path`的一部分。
 
 
 
