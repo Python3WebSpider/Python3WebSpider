@@ -2,6 +2,8 @@
 
 这个模块定义了处理`URL`的标准接口，例如实现`URL`各部分的抽取，合并以及链接转换。它支持如下类型的链接处理：`file`、`ftp`、`gopher`、`hdl`、`http`、`https`、`imap`、`mailto`、 `mms`、`news`、`nntp`、`prospero`、`rsync`、`rtsp`、`rtspu`、`sftp`、`shttp`、 `sip`、`sips`、`snews`、`svn`、`svn+ssh`、`telnet`、`wais`。
 
+#### urllib.parse.urlparse()的用法
+
 常用的函数有`urllib.parse.urlparse()`。
 
 先用一个实例来感受一下：
@@ -124,16 +126,86 @@ ParseResult(scheme='http', netloc='www.baidu.com', path='/index.html#comment', p
 
 可以发现当链接中不包含`params`和`query`时，`fragment`便会被解析为`path`的一部分。
 
+返回结果`ParseResult`实际上是一个元组，你可以用索引顺序来获取，也可以用属性名称获取。
 
+```python
+# coding=utf-8
+from urllib.parse import urlparse
 
+result = urlparse('http://www.baidu.com/index.html#comment', allow_fragments=False)
+print(result.scheme, result[0], result.netloc, result[1], sep='\n')
+```
 
+在这里我们分别用索引和属性名获取了`scheme`和`netloc`，运行结果如下：
 
+```
+http
+http
+www.baidu.com
+www.baidu.com
+```
 
+可以发现二者结果是一致的，两种方法都可以成功获取。
 
+#### urllib.parse.urlunparse()的用法
 
+有了`urlparse()`那相应地就有了它的对立方法`urlunparse()`。
 
+接受的参数是一个可迭代对象，但是它的长度必须是6，否则会抛出参数数量不足或者过多的问题。
 
+先用一个实例感受一下：
 
+```python
+# coding=utf-8
+from urllib.parse import urlunparse
+
+data = ['http', 'www.baidu.com', 'index.html', 'user', 'a=6', 'comment']
+print(urlunparse(data))
+
+```
+
+参数用了`list`类型，当然你也可以用其他的类型如`tuple`或者特定的数据结构。
+
+运行结果如下：
+
+```
+http://www.baidu.com/index.html;user?a=6#comment
+```
+
+#### urllib.parse.urlsplit()的用法
+
+这个和`urlparse()`方法非常相似，只不过它不会单独解析`parameters`这一部分，只返回五个结果。上面例子中的`parameters`会合并到`path`中。
+
+用一个实例感受一下：
+
+```python
+# coding=utf-8
+from urllib.parse import urlsplit
+
+result = urlsplit('http://www.baidu.com/index.html;user?id=5#comment')
+print(result)
+```
+运行结果：
+
+```
+SplitResult(scheme='http', netloc='www.baidu.com', path='/index.html;user', query='id=5', fragment='comment')
+```
+
+返回结果是`SplitResult`，其实也是一个元组类型，可以用属性获取值也可以用索引来获取。
+
+```python
+# coding=utf-8
+from urllib.parse import urlsplit
+
+result = urlsplit('http://www.baidu.com/index.html;user?id=5#comment')
+print(result.scheme, result[0])
+```
+
+运行结果：
+
+```
+http http
+```
 
 
 
