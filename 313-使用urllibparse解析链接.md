@@ -1,8 +1,6 @@
 ### 使用urllib.parse解析链接
 
-
-
-
+这个模块定义了处理`URL`的标准接口，例如实现`URL`各部分的抽取，合并以及链接转换。它支持如下类型的链接处理：`file`、`ftp`、`gopher`、`hdl`、`http`、`https`、`imap`、`mailto`、 `mms`、`news`、`nntp`、`prospero`、`rsync`、`rtsp`、`rtspu`、`sftp`、`shttp`、 `sip`、`sips`、`snews`、`svn`、`svn+ssh`、`telnet`、`wais`。
 
 
 
