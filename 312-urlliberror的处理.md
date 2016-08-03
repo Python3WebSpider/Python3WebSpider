@@ -129,12 +129,11 @@ except error.URLError as e:
     print(e.reason)
 else:
     print('Request Successfully')
-
 ```
 
+这样我们就可以做到先捕获`HTTPError`，获取它的错误码，错误原因，服务器响应头等详细信息。如果非`HTTPError`，再捕获`URLError`错误，输出错误原因。最后用`else`来处理正常的逻辑。
 
-
-
+在有时候`e.reason`返回的不一定是字符串，可能是一个对象。
 
 
 
