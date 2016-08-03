@@ -234,6 +234,12 @@ http://www.baidu.com/index.html?a=6#comment
 
 #### urllib.parse.urljoin()
 
+有了`urlunparse()`和`urlunsplit()`方法，我们可以完成链接的合并，不过前提必须要有特定长度的对象，链接的每一部分都要清晰分开。
+
+生成链接还有另一个方法，利用`urljoin()`方法我们可以提供一个`base_url`（基础链接），新的链接作为第二个参数，方法会分析`base_url`的`scheme`、`path`等内容对新链接缺失的部分进行补充，作为结果返回。
+
+空说无益，我们用几个实例来感受一下：
+
 
 
 
