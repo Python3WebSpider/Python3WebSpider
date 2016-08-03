@@ -1,4 +1,4 @@
-### urllib.error的处理
+### 使用urllib.error处理异常
 
 `urllib.error`模块定义了由`urllib.request`产生的异常。如果出现了问题，`urllib.request`便会抛出`urllib.error`，下面会对其进行详细的介绍。
 

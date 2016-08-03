@@ -1,4 +1,4 @@
-### urllib.request的使用
+### 使用urllib.request发送请求
 
 #### urllib.request.urlopen()基本使用
 
