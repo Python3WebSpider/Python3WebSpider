@@ -2,9 +2,9 @@
 
 #### 什么是robots协议
 
-要了解`urllib.robotparser`这个库，首先我们需要了解下什么是robots协议。
+要了解`urllib.robotparser`这个库，首先我们需要了解下什么是`robots协议`。
 
-robots协议也被称作爬虫协议、机器人协议，它的全名叫做`网络爬虫排除标准（Robots Exclusion Protocol）`，同来告诉爬虫和搜索引擎哪些页面可以抓取，哪些不可以抓取。它通常是一个叫做`robots.txt`的文本文件，放在网站的根目录下。
+`robots协议`也被称作爬虫协议、机器人协议，它的全名叫做`网络爬虫排除标准（Robots Exclusion Protocol）`，同来告诉爬虫和搜索引擎哪些页面可以抓取，哪些不可以抓取。它通常是一个叫做`robots.txt`的文本文件，放在网站的根目录下。
 
 当一个搜索蜘蛛访问一个站点时，它首先会检查下这个站点根目录下是否存在`robots.txt`文件，如果存在，搜索蜘蛛会根据其中定义的爬取范围来爬取。如果没有找到这个文件，那么搜索蜘蛛便会访问所有可直接访问的页面。
 
@@ -73,9 +73,9 @@ Disallow: /
 | Scooter | altavista | www.altavista.com |
 
 
+#### 使用urllib.robotparser
 
-
-
+了解了什么是`robots`
 
 
 
