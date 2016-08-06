@@ -63,12 +63,14 @@ Disallow: /
 
 大家可能会疑惑，蜘蛛名是哪儿来的？为什么就叫这个名？其实它是有固定名字的了，比如百度的就叫做BaiduSpider，下面的表格列出了一些常见的搜索蜘蛛的名称及对应的网站。
 
-| 蜘蛛名称 | 网站 |
-| ---------| ------ |
-| BaiduSpider | www.baidu.com |
-
-
-
+| 蜘蛛名称 | 名称|网站 |
+| ---------| -------- |
+| BaiduSpider | 百度 | www.baidu.com |
+| Googlebot| 谷歌 | www.google.com |
+| 360Spider| 360搜索 | www.so.com |
+| YodaoBot | 有道 | www.youdao.com |
+| ia_archiver | Alexa | www.alexa.cn |
+| Scooter | altavista | www.altavista.com |
 
 
 
