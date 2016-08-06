@@ -75,16 +75,73 @@ Disallow: /
 
 #### 使用urllib.robotparser
 
-了解了什么是`robots`
+了解了什么是`robots协议`之后，我们就可以使用`urllib.robotparser`来解析`robots.txt`了。
 
+`urllib.parser`提供了一个类，叫做`RobotFileParser`。它可以根据某网站的`robots.txt`文件来判断一个爬取蜘蛛是否有权限来爬取这个网页。
 
+使用非常简单，首先看一下它的声明
 
+```python
+urllib.robotparser.RobotFileParser(url='')
+```
 
+使用这个类的时候非常简单，只需要在构造方法里传入`robots.txt`的链接即可。当然也可以声明时不传入，默认为空，再使用`set_url(url)`方法设置一下也可以。
 
+有常用的几个方法分别介绍一下：
 
+`set_url(url)`用来设置`robots.txt`文件的链接。如果已经在创建`RobotFileParser`对象时传入了链接，那就不需要再使用这个方法设置了。
 
+`read()`读取`robots.txt`文件并进行分析，注意这个函数是执行一个读取和分析操作，如果不调用这个方法，接下来的判断都会为`False`，所以一定记得调用这个方法，这个方法不会返回任何内容，但是执行了读取操作。
 
+`parse(lines)`方法是用来解析`robots.txt`文件的，传入的参数是`robots.txt`某些行的内容，它会按照`robots.txt`的语法规则来分析这些内容。
 
+`can_fetch(useragent, url)`方法传入两个参数，第一个是`User-agent`，第二个是要抓取的`URL`，返回的内容是该搜索引擎是否可以抓取这个`URL`，返回结果是`True`或`False`。
 
+`mtime()`返回的是上次抓取和分析`robots.txt`的时间，这个对于长时间分析和抓取的搜索蜘蛛是很有必要的，你可能需要定期检查来抓取最新的`robots.txt`。
 
+`modified()`同样的对于长时间分析和抓取的搜索蜘蛛很有帮助，将当前时间设置为上次抓取和分析`robots.txt`的时间。
 
+以上是这个类提供的所有方法，下面我们用实例来感受一下：
+
+```python
+from urllib.robotparser import RobotFileParser
+
+rp = RobotFileParser()
+rp.set_url('http://www.jianshu.com/robots.txt')
+rp.read()
+print(rp.can_fetch('*', 'http://www.jianshu.com/p/b67554025d7d'))
+print(rp.can_fetch('*', "http://www.jianshu.com/search?q=python&page=1&type=collections"))
+
+```
+
+以简书为例，我们首先创建`RobotFileParser`对象，然后通过`set_url()`方法来设置了`robots.txt`的链接。当然不用这个方法的话，可以在声明时直接用`rp = RobotFileParser('http://www.jianshu.com/robots.txt')`声明对象，下一步关键的，执行读取和分析。然后后面利用了`can_fetch()`方法来判断了网页是否可以被抓取。
+
+运行结果：
+
+```
+True
+False
+```
+
+同样也可以使用`parser()`方法执行读取和分析。
+
+用一个实例感受一下：
+
+```python
+from urllib.robotparser import RobotFileParser
+from urllib.request import urlopen
+
+rp = RobotFileParser()
+rp.parse(urlopen('http://www.jianshu.com/robots.txt').read().decode('utf-8').split('\n'))
+print(rp.can_fetch('*', 'http://www.jianshu.com/p/b67554025d7d'))
+print(rp.can_fetch('*', "http://www.jianshu.com/search?q=python&page=1&type=collections"))
+```
+
+运行结果一样：
+
+```
+True
+False
+```
+
+以上介绍了`urllib.robotparser`的基本用法和实例讲解，利用它我们就可以方便地判断哪些页面可以抓取哪些不可以了。
