@@ -13,7 +13,7 @@ robots协议也被称作爬虫协议、机器人协议，它的全名叫做`网�
 ```
 User-agent: *
 Disallow: /
-Allow: /public
+Allow: /public/
 ```
 
 以上的两行实现了对所有搜索蜘蛛只允许爬取`public`目录的作用。
@@ -24,7 +24,7 @@ Allow: /public
 
 `Disallow`指定了不允许抓取的目录，比如上述例子中设置为`/`则代表不允许抓取所有页面。在`robots.txt`文件中，至少要有一条`Disallow`记录。
 
-`Allow`它必须要和`Disallow`一起使用，一般不会单独使用，现在我们设置为`/public`，起到的作用是所有页面不允许抓取，但是`public`目录是可以抓取的。
+`Allow`它必须要和`Disallow`一起使用，一般不会单独使用，现在我们设置为`/public/`，起到的作用是所有页面不允许抓取，但是`public`目录是可以抓取的。
 
 下面我们再来看几个例子感受一下：
 
@@ -44,18 +44,22 @@ Disallow:
 
 或者直接把`robots.txt`文件留空。
 
+##### 禁止所有搜索蜘蛛访问网站某些目录
 
+```
+User-agent: *
+Disallow: /private/
+Disallow: /tmp/
+```
 
+##### 只允许某一个搜索蜘蛛访问
 
-
-
-
-
-
-
-
-
-
+```
+User-agent: WebCrawler
+Disallow:
+User-agent: *
+Disallow: /
+```
 
 
 
