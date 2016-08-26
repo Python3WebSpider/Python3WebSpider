@@ -47,11 +47,11 @@ print(r.cookies)
 用一个实例来感受一下：
 
 ```python
-r = requests.post("http://httpbin.org/post")
-r = requests.put("http://httpbin.org/put")
-r = requests.delete("http://httpbin.org/delete")
-r = requests.head("http://httpbin.org/get")
-r = requests.options("http://httpbin.org/get")
+r = requests.post('http://httpbin.org/post')
+r = requests.put('http://httpbin.org/put')
+r = requests.delete('http://httpbin.org/delete')
+r = requests.head('http://httpbin.org/get')
+r = requests.options('http://httpbin.org/get')
 ```
 
 怎么样？是不是比`urllib`太多了？
@@ -67,7 +67,7 @@ HTTP中最常见的请求之一就是`GET`请求，我们首先来详细了解�
 ```python
 import requests
 
-r = requests.get("http://httpbin.org/get")
+r = requests.get('http://httpbin.org/get')
 print(r.text)
 ```
 
@@ -97,15 +97,40 @@ print(r.text)
 
 同样很简单，利用`params`这个参数就好了。
 
+实例如下：
 
+```python
+import requests
 
+data = {
+    'name': 'germey',
+    'age': 22
+}
+r = requests.get("http://httpbin.org/get", params=data)
+print(r.text)
+```
 
+运行结果如下：
 
+```
+{
+  "args": {
+    "age": "22", 
+    "name": "germey"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.10.0"
+  }, 
+  "origin": "122.4.215.33", 
+  "url": "http://httpbin.org/get?age=22&name=germey"
+}
 
+```
 
-
-
-
+通过返回信息我们可以判断，请求的链接自动被构造成了`http://httpbin.org/get?age=22&name=germey`，是不是很方便？
 
 
 
