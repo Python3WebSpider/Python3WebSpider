@@ -1,8 +1,10 @@
 ### 安装requests
 
+#### 安装流程
+
 由于`requests`属于第三方库，也就是`python`默认不会自带这个库，需要我们手动去安装，下面我们首先看一下它的安装过程。
 
-#### pip安装
+##### pip安装
 
 无论是Windows、Linux还是Mac，你都可以通过pip这个包管理工具来安装。
 
@@ -14,7 +16,7 @@ pip3 install requests
 
 这是最简单的安装方式，推荐此种方法。
 
-### 源码安装
+##### 源码安装
 
 那么如果你没有pip或者不想用pip来安装，或者想获取某一特定版本，可以选择下载源码安装。
 
@@ -47,6 +49,8 @@ python3 setup.py install
 
 即可完成`requests`的安装。
 
+#### 验证安装
+
 为了证明你已经安装成功，可以在命令行下测试一下。
 
 ```bash
@@ -62,7 +66,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 在命令行首先输入`python3`，进入命令行模式，然后输入`import requests`，如果什么错误提示也没有，那么就证明你已经成功安装了`requests`。
 
 
-
+好，安装成功之后，接下来在下一节就让我们一起领略一下它的风采吧。
 
 
 
