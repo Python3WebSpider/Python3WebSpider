@@ -58,6 +58,38 @@ r = requests.options("http://httpbin.org/get")
 
 其实这只是冰山一角，更多的还在后面呢。
 
+#### 基本GET请求
+
+HTTP中最常见的请求之一就是`GET`请求，我们首先来详细了解下利用`requests`来构建`GET`请求的方法以及相关属性方法操作。
+
+首先让我们来构建一个最简单的`GET`请求，请求`httpbin.org/get`，它会判断如果你是`GET`请求的话，会返回响应的请求信息。
+
+```python
+import requests
+
+r = requests.get("http://httpbin.org/get")
+print(r.text)
+```
+
+运行结果如下：
+
+```json
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.10.0"
+  }, 
+  "origin": "122.4.215.33", 
+  "url": "http://httpbin.org/get"
+}
+```
+
+可以发现我们成功发起了get请求，请求的链接和头信息都有相应的返回。
+
+
 
 
 
