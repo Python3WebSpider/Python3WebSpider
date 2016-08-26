@@ -12,4 +12,5 @@
 * [3.1.4 使用urllib.robotparser分析robots协议](314-使用urllibrobotparser分析robots协议.md)
 * [3.2 使用requests](32-使用requests.md)
 * [3.2.1 安装requests](321-安装requests.md)
+* [3.2.2 requests的基本使用](322-requests的基本使用.md)
 
