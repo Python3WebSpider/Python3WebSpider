@@ -11,5 +11,5 @@
 * [3.1.3 使用urllib.parse解析链接](313-使用urllibparse解析链接.md)
 * [3.1.4 使用urllib.robotparser分析robots协议](314-使用urllibrobotparser分析robots协议.md)
 * [3.2 使用requests](32-使用requests.md)
-* [3.2.1 安装requests](321-安装request.md)
+* [3.2.1 安装requests](321-安装requests.md)
 
