@@ -2,7 +2,6 @@
 
 #### 文件上传
 
-
 ```python
 import requests
 
@@ -12,7 +11,6 @@ print(r.text)
 ```
 
 #### 设置超时
-
 
 ```python
 r.headers.get('content-type')
