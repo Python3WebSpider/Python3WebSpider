@@ -457,4 +457,11 @@ exit() if not r.status_code == requests.codes.ok else print('Request Successfull
 
 比如如果你想判断结果是不是`404`状态，你可以用`requests.codes.not_found`来比对。
 
-s
+##### 响应头
+
+如果想得到响应头信息，可以使用`headers`属性。它其实本质上也是一个字典形式。可以通过数组索引或者`get()`方法来获取某一条头信息内容。
+
+比如获取`Content-Type`可以用`r.headers['Content-Type']`，也可以用`r.headers.get('content-type')`，是不是很方便呢？
+
+好，至此我们介绍了利用`requests`模拟最基本的`GET`和`POST`请求，关于更多高级的用法，会在下一节进行讲解。
+
