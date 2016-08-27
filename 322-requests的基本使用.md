@@ -276,3 +276,57 @@ print(r.text)
 ```
 
 当然你可以在`headers`这个数组中任意添加其他的头信息。
+
+#### 基本POST请求
+
+在前面我们讲解了最基本的`GET`请求，另外一种比较常见的请求方式就是`POST`了，就像模拟表单提交一样，将一些数据提交到某个链接。
+
+使用`requests`实现`POST`请求同样非常简单。
+
+我们先用一个实例来感受一下：
+
+```python
+import requests
+
+data = {'name': 'germey', 'age': '22'}
+r = requests.post("http://httpbin.org/post", data=data)
+print(r.text)
+```
+
+上面的例子请求的是`httpbin.org/post`，它可以判断如果请求是`POST`方式，就把相关请求信息输出出来。
+
+运行结果如下：
+
+```
+{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {
+    "age": "22", 
+    "name": "germey"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "18", 
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.10.0"
+  }, 
+  "json": null, 
+  "origin": "182.33.248.131", 
+  "url": "http://httpbin.org/post"
+}
+
+```
+
+可以发现，成功获得了返回结果，返回结果中的`form`部分就是提交的数据，那么这就证明`POST`请求成功发送了。
+
+
+
+
+
+
+
+
