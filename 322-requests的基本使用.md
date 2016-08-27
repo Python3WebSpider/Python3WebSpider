@@ -132,6 +132,31 @@ print(r.text)
 
 通过返回信息我们可以判断，请求的链接自动被构造成了`http://httpbin.org/get?age=22&name=germey`，是不是很方便？
 
+另外，网页的返回类型实际上是`str`类型，但是它很特殊，是`Json`的格式，所以如果我们想直接把返回结果解析，得到一个字典`dict`格式的话，可以直接调用`json()`方法。
+
+用一个实例来感受一下：
+
+```python
+import requests
+
+r = requests.get("http://httpbin.org/get")
+print(type(r.text))
+print(r.json())
+print(type(r.json()))
+```
+
+运行结果如下：
+
+```
+<class 'str'>
+{'headers': {'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Host': 'httpbin.org', 'User-Agent': 'python-requests/2.10.0'}, 'url': 'http://httpbin.org/get', 'args': {}, 'origin': '182.33.248.131'}
+<class 'dict'>
+```
+
+可以发现，调用`json()`方法，就可以将返回结果是`Json`格式的字符串转化为字典`dict`。
+
+但注意，如果返回结果不是`Json`格式，便会出现解析错误，抛出`json.decoder.JSONDecodeError`的异常。
+
 #### 抓取网页
 
 如上的请求链接返回的是`Json`形式的字符串，那么如果我们请求普通的网页，那么肯定就能获得相应的内容了。
@@ -216,7 +241,6 @@ with open('favicon.ico', 'wb') as f:
 ![](/assets/3-2-3.ico)
 
 同样的，音频视频文件也可以用这种方法获取。
-
 
 
 
