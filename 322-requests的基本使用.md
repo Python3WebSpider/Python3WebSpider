@@ -132,6 +132,49 @@ print(r.text)
 
 通过返回信息我们可以判断，请求的链接自动被构造成了`http://httpbin.org/get?age=22&name=germey`，是不是很方便？
 
+如上的请求链接返回的是`Json`形式的字符串，那么如果我们请求普通的网页，那么肯定就能获得相应的内容了。
+
+下面我们以知乎－发现页面为例来体验一下：
+
+```python
+import requests
+import re
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+}
+r = requests.get("https://www.zhihu.com/explore", headers=headers)
+pattern = re.compile('explore-feed.*?question_link.*?>(.*?)</a>', re.S)
+titles = re.findall(pattern, r.text)
+print(titles)
+```
+
+如上代码，我们请求了知乎－发现页面`https://www.zhihu.com/explore`，在这里加入了头信息，头信息中包含了`User-Agent`信息，也就是浏览器标识信息。如果不加这个，知乎会禁止抓取。
+
+在接下来用到了最基础的正则表达式，来匹配出所有的问题内容，关于正则表达式会在后面的章节中详细介绍，在这里作为用到实例来配合讲解。
+
+运行结果如下：
+
+```
+['\n为什么很多人喜欢提及「拉丁语系」这个词？\n', '\n在没有水的情况下水系宝可梦如何战斗？\n', '\n有哪些经验可以送给 Kindle 新人？\n', '\n谷歌的广告业务是如何赚钱的？\n', '\n程序员该学习什么，能在上学期间挣钱？\n', '\n有哪些原本只是一个小消息，但回看发现是个惊天大新闻的例子？\n', '\n如何评价今敏？\n', '\n源氏是怎么把那么长的刀从背后拔出来的？\n', '\n年轻时得了绝症或大病是怎样的感受？\n', '\n年轻时得了绝症或大病是怎样的感受？\n']
+
+```
+
+发现成功提取出了所有的问题内容。
+
+没错，提取信息就是这么方便。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
