@@ -186,6 +186,37 @@ print(r.content)
 
 ![](/assets/3-2-1.png)
 
+在这里打印了`response`的两个属性，一个是`text`，另一个是`content`。
+
+运行结果如下，由于包含特殊内容，在此放运行结果的图片：
+
+![](/assets/3-2-2.png)
+
+那么前两行便是`r.text`的结果，最后一行是`r.content`的结果。
+
+可以注意到，前者出现了乱码，后者结果前面带有一个`b`，代表这是`bytes`类型的数据。由于图片是二进制数据，所以前者在打印时转化为`str`类型，也就是图片直接转化为字符串，理所当然会出现乱码。
+
+两个属性有什么区别？前者返回的是字符串类型，如果返回结果是文本文件，那么用这种方式直接获取其内容即可。如果返回结果是图片、音频、视频等文件，`requests`会为我们自动解码成`bytes`类型，即获取字节流数据。
+
+进一步地，我们可以将刚才提取到的图片保存下来。
+
+```python
+import requests
+
+r = requests.get("https://github.com/favicon.ico")
+with open('favicon.ico', 'wb') as f:
+    f.write(r.content)
+    f.close()
+```
+
+运行结束之后，可以发现在文件夹中出现了名为`favicon.ico`的图标。
+
+
+
+
+
+
+
 
 
 
