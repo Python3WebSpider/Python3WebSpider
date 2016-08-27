@@ -463,5 +463,5 @@ exit() if not r.status_code == requests.codes.ok else print('Request Successfull
 
 比如获取`Content-Type`可以用`r.headers['Content-Type']`，也可以用`r.headers.get('content-type')`，是不是很方便呢？
 
-好，至此我们介绍了利用`requests`模拟最基本的`GET`和`POST`请求，关于更多高级的用法，会在下一节进行讲解。
+好，至此我们介绍了利用`requests`模拟最基本的`GET`和`POST`请求的过程，关于更多高级的用法，会在下一节进行讲解。
 
