@@ -242,11 +242,37 @@ with open('favicon.ico', 'wb') as f:
 
 同样的，音频、视频文件也可以用这种方法获取。
 
+#### 添加头信息
 
+如`urllib.request`一样，我们也可以通过`headers`参数来传递头信息。
 
+比如上面的知乎的例子，如果不传递头信息，就不能正常请求：
 
+```python
+import requests
 
+r = requests.get("https://www.zhihu.com/explore")
+print(r.text)
+```
 
+运行结果如下：
 
+```html
+<html><body><h1>500 Server Error</h1>
+An internal server error occured.
+</body></html>
+```
 
+但如果加上请求头信息，那就没问题了：
 
+```python
+import requests
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+}
+r = requests.get("https://www.zhihu.com/explore", headers=headers)
+print(r.text)
+```
+
+当然你可以在`headers`这个数组中任意添加其他的头信息。
