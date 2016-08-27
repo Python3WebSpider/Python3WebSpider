@@ -323,6 +323,59 @@ print(r.text)
 
 可以发现，成功获得了返回结果，返回结果中的`form`部分就是提交的数据，那么这就证明`POST`请求成功发送了。
 
+#### 响应
+
+发送请求之后，得到的自然就是响应，在上面的实例中我们使用了`text`和`content`获取了响应内容。不过还有很多属性和方法可以获取其他的信息。
+
+比如响应状态码、响应头、Cookies。
+
+下面用一个实例来感受一下：
+
+```python
+import requests
+
+r = requests.get('http://www.jianshu.com')
+print(type(r.status_code), r.status_code)
+print(type(r.headers), r.headers)
+print(type(r.cookies), r.cookies)
+print(type(r.url), r.url)
+print(type(r.history), r.history)
+```
+
+在这里分别打印输出了响应状态吗`status_code`，响应头`headers`，Cookies，请求连接，请求历史的类型和内容。
+
+运行结果如下：
+
+```
+<class 'int'> 200
+<class 'requests.structures.CaseInsensitiveDict'> {'X-Runtime': '0.006363', 'Connection': 'keep-alive', 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff', 'Date': 'Sat, 27 Aug 2016 17:18:51 GMT', 'Server': 'nginx', 'X-Frame-Options': 'DENY', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'ETag': 'W/"3abda885e0e123bfde06d9b61e696159"', 'X-XSS-Protection': '1; mode=block', 'X-Request-Id': 'a8a3c4d5-f660-422f-8df9-49719dd9b5d4', 'Transfer-Encoding': 'chunked', 'Set-Cookie': 'read_mode=day; path=/, default_font=font2; path=/, _session_id=xxx; path=/; HttpOnly', 'Cache-Control': 'max-age=0, private, must-revalidate'}
+<class 'requests.cookies.RequestsCookieJar'> <RequestsCookieJar[<Cookie _session_id=xxx for www.jianshu.com/>, <Cookie default_font=font2 for www.jianshu.com/>, <Cookie read_mode=day for www.jianshu.com/>]>
+<class 'str'> http://www.jianshu.com/
+<class 'list'> []
+
+```
+
+`session_id`过长在此简写。可以看到，`headers`还有`cookies`这两个部分都是特定的数据结构，打开浏览器同样可以发现有同样的响应头信息。
+
+##### 状态码
+
+在这里状态码常用来判断请求是否成功，`requests`还提供了一个内置的状态码查询对象`requests.codes`。比如你可以通过`if r.status_code == requests.codes.ok`来判断请求是否成功。
+
+用一个实例来感受一下：
+
+```python
+import requests
+
+r = requests.get('http://www.jianshu.com')
+assert r.status_code == requests.codes.ok
+print('Request Successfully')
+```
+
+在这里使用了`assert`断言，通过比较返回码和内置的成功的返回码是一致的，来保证请求得到了正常响应，否则程序终止。
+
+如果程序正常执行，那么就输出成功请求的消息。
+
+那么肯定不能只有`ok`这个条件码，还有没有其他的呢？
 
 
 
@@ -330,3 +383,4 @@ print(r.text)
 
 
 
+s
