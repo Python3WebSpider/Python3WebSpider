@@ -114,7 +114,9 @@ for cookie in cookies.split(';'):
 r = requests.get("http://www.zhihu.com", cookies=jar, headers=headers)
 print(r.text)
 ```
-上面我们首先新建了一个`RequestCookieJar`对象，然后将复制下来的`Cookie`利用`split()`方法分割，利用`set()`方法设置好每一个`Cookie`的`key`和`value`，然后通过`requests.get()`方法的`cookies`参数设置这个``
+上面我们首先新建了一个`RequestCookieJar`对象，然后将复制下来的`Cookie`利用`split()`方法分割，利用`set()`方法设置好每一个`Cookie`的`key`和`value`，然后通过`requests.get()`方法的`cookies`参数设置即可，当然由于知乎本身的限制，`headers`变量不能少，只不过不需要在原来的`headers`里面设置`Cookie`字段了。
+
+测试后，发现同样可以正常登录知乎。
 
 
 #### 设置超时
