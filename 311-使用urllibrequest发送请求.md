@@ -309,6 +309,8 @@ req.add_header('User-Agent', 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)')
 
 `Opener`可以使用`open()`方法，返回的类型和`urlopen()`如出一辙。那么它和`Handler`有什么关系？简而言之，就是利用`Handler`来构建`Opener`。
 
+##### 认证
+
 我们先用一个实例来感受一下：
 
 ```python
@@ -331,6 +333,8 @@ urllib.request.urlopen('http://www.example.com/login.html')
 
 接下来利用`urllib.request.build_opener()`方法来利用这个处理器构建一个`Opener`，那么这个`Opener`在发送请求的时候就具备了认证功能了。接下来利用`Opener`的`open()`方法打开链接，就可以完成认证了。
 
+##### 代理
+
 如果添加代理，可以这样做：
 
 ```python
@@ -351,6 +355,111 @@ print(response.read())
 在这里使用了`ProxyHandler`，`ProxyHandler`的参数是一个字典，key是协议类型，比如`http`还是`https`等，value是代理链接，可以添加多个代理。
 
 然后利用`build_opener()`方法利用这个`Handler`构造一个`Opener`，然后发送请求即可。
+
+##### Cookie设置
+
+我们先用一个实例来感受一下怎样将网站的`Cookie`获取下来。
+
+```python
+import http.cookiejar, urllib.request
+
+cookie = http.cookiejar.CookieJar()
+handler = urllib.request.HTTPCookieProcessor(cookie)
+opener = urllib.request.build_opener(handler)
+response = opener.open('http://www.baidu.com')
+for item in cookie:
+    print(item.name+"="+item.value)
+
+```
+
+首先我们必须声明一个`CookieJar`对象，接下来我们就需要利用`HTTPCookieProcessor`来构建一个`handler`，最后利用`build_opener`方法构建出`opener`，执行`open()`即可。
+
+运行结果如下：
+
+```
+BAIDUID=2E65A683F8A8BA3DF521469DF8EFF1E1:FG=1
+BIDUPSID=2E65A683F8A8BA3DF521469DF8EFF1E1
+H_PS_PSSID=20987_1421_18282_17949_21122_17001_21227_21189_21161_20927
+PSTM=1474900615
+BDSVRTM=0
+BD_HOME=0
+```
+
+可以看到输出了每一条`Cookie`的名称还有值。
+
+不过既然能输出，那可不可以输出成文件格式呢？我们知道很多`Cookie`实际也是以文本形式保存的。
+
+答案当然是肯定的，我们用下面的实例来感受一下：
+
+```python
+filename = 'cookie.txt'
+cookie = http.cookiejar.MozillaCookieJar(filename)
+handler = urllib.request.HTTPCookieProcessor(cookie)
+opener = urllib.request.build_opener(handler)
+response = opener.open('http://www.baidu.com')
+cookie.save(ignore_discard=True, ignore_expires=True)
+```
+
+这时的`CookieJar`就需要换成`MozillaCookieJar`，生成文件时需要用到它，它是`CookieJar`的子类，可以用来处理`Cookie`和文件相关的事件，读取和保存`Cookie`，它可以将`Cookie`保存成`Mozilla`型的格式。
+
+运行之后可以发现生成了一个`cookie.txt`文件。
+
+内容如下：
+
+```
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.baidu.com	TRUE	/	FALSE	3622386254	BAIDUID	05AE39B5F56C1DEC474325CDA522D44F:FG=1
+.baidu.com	TRUE	/	FALSE	3622386254	BIDUPSID	05AE39B5F56C1DEC474325CDA522D44F
+.baidu.com	TRUE	/	FALSE		H_PS_PSSID	19638_1453_17710_18240_21091_18560_17001_21191_21161
+.baidu.com	TRUE	/	FALSE	3622386254	PSTM	1474902606
+www.baidu.com	FALSE	/	FALSE		BDSVRTM	0
+www.baidu.com	FALSE	/	FALSE		BD_HOME	0
+
+```
+
+另外还有一个`LWPCookieJar`，同样可以读取和保存`Cookie`，但是保存的格式和`MozillaCookieJar`的不一样，它会保存成与libwww-perl的Set-Cookie3文件格式的`Cookie`。
+
+那么在声明时就改为
+
+```python
+cookie = http.cookiejar.LWPCookieJar(filename)
+
+```
+
+生成的内容如下：
+
+```
+#LWP-Cookies-2.0
+Set-Cookie3: BAIDUID="0CE9C56F598E69DB375B7C294AE5C591:FG=1"; path="/"; domain=".baidu.com"; path_spec; domain_dot; expires="2084-10-14 18:25:19Z"; version=0
+Set-Cookie3: BIDUPSID=0CE9C56F598E69DB375B7C294AE5C591; path="/"; domain=".baidu.com"; path_spec; domain_dot; expires="2084-10-14 18:25:19Z"; version=0
+Set-Cookie3: H_PS_PSSID=20048_1448_18240_17944_21089_21192_21161_20929; path="/"; domain=".baidu.com"; path_spec; domain_dot; discard; version=0
+Set-Cookie3: PSTM=1474902671; path="/"; domain=".baidu.com"; path_spec; domain_dot; expires="2084-10-14 18:25:19Z"; version=0
+Set-Cookie3: BDSVRTM=0; path="/"; domain="www.baidu.com"; path_spec; discard; version=0
+Set-Cookie3: BD_HOME=0; path="/"; domain="www.baidu.com"; path_spec; discard; version=0
+
+```
+
+由此看来生成的格式还是有比较大的差异的。
+
+那么生成了`Cookie`文件，怎样从文件读取并利用呢？
+
+下面我们以`LWPCookieJar`格式为例来感受一下：
+
+```python
+cookie = http.cookiejar.LWPCookieJar()
+cookie.load('cookie.txt', ignore_discard=True, ignore_expires=True)
+handler = urllib.request.HTTPCookieProcessor(cookie)
+opener = urllib.request.build_opener(handler)
+response = opener.open('http://www.baidu.com')
+print(response.read().decode('utf-8'))
+```
+
+前提是我们首先利用上面的方式生成了`LWPCookieJar`格式的`Cookie`，然后利用`load()`方法，传入文件名称，后面同样的方法构建`handler`和`opener`即可。
+
+运行结果正常输出百度网页的源代码。
 
 好，通过如上用法，我们可以实现绝大多数请求功能的设置了。
 
