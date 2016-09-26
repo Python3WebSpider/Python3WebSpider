@@ -7,7 +7,7 @@
 用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 files = {'file': open('favicon.ico', 'rb')}
@@ -50,7 +50,7 @@ print(r.text)
 我们先用一个实例感受一下获取`Cookies`的过程：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get("https://www.baidu.com")
@@ -82,7 +82,7 @@ __bsi=13533594356813414194_00_14_N_N_2_0303_C02F_N_N_N_0
 将其设置到`headers`里面，发送请求：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 headers = {
@@ -102,7 +102,7 @@ print(r.text)
 当然也可以通过cookies参数来设置，不过这样就需要构造`RequestsCookieJar`对象，而且需要分割一下`Cookie`变量，相对繁琐，不过效果是相同的。
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 cookies = 'q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0="AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938"; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t="2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==";z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0'
@@ -136,7 +136,7 @@ print(r.text)
 下面用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 requests.get('http://httpbin.org/cookies/set/number/123456789')
@@ -159,7 +159,7 @@ print(r.text)
 喔并不行。那这时候我们想起刚才说的`Session`了，改成这个试试看：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 s = requests.Session()

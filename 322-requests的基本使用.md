@@ -9,7 +9,7 @@
 下面我们用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get('https://www.baidu.com/')
@@ -66,7 +66,7 @@ HTTP中最常见的请求之一就是`GET`请求，我们首先来详细了解�
 首先让我们来构建一个最简单的`GET`请求，请求`httpbin.org/get`，它会判断如果你是`GET`请求的话，会返回响应的请求信息。
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get('http://httpbin.org/get')
@@ -102,7 +102,7 @@ print(r.text)
 实例如下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 data = {
@@ -140,7 +140,7 @@ print(r.text)
 用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get("http://httpbin.org/get")
@@ -168,7 +168,7 @@ print(type(r.json()))
 下面我们以知乎－发现页面为例来体验一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 import re
 
@@ -205,7 +205,7 @@ print(titles)
 下面我们以GitHub的站点图标为例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get("https://github.com/favicon.ico")
@@ -232,7 +232,7 @@ print(r.content)
 进一步地，我们可以将刚才提取到的图片保存下来。
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get("https://github.com/favicon.ico")
@@ -256,7 +256,7 @@ with open('favicon.ico', 'wb') as f:
 比如上面的知乎的例子，如果不传递头信息，就不能正常请求：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get("https://www.zhihu.com/explore")
@@ -274,7 +274,7 @@ An internal server error occured.
 但如果加上请求头信息，那就没问题了：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 headers = {
@@ -295,7 +295,7 @@ print(r.text)
 我们先用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 data = {'name': 'germey', 'age': '22'}
@@ -342,7 +342,7 @@ print(r.text)
 下面用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get('http://www.jianshu.com')
@@ -375,7 +375,7 @@ print(type(r.history), r.history)
 用一个实例来感受一下：
 
 ```python
-# coding=utf8
+# coding=utf-8
 import requests
 
 r = requests.get('http://www.jianshu.com')
