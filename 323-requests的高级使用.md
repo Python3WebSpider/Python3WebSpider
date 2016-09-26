@@ -70,6 +70,53 @@ __bsi=13533594356813414194_00_14_N_N_2_0303_C02F_N_N_N_0
 
 然后用`items()`方法将其转化为元组组成的列表，遍历输出每一个`cookie`的名和值。
 
+当然，你也可以直接用`Cookie`来维持登录状态。
+
+比如我们以知乎为例，直接利用`Cookie`来维持登录状态。
+
+首先登录知乎，将请求头中的`Cookie`复制下来。
+
+![](/assets/3-2-4.png)
+
+将其设置到`headers`里面，发送请求：
+
+```python
+import requests
+
+headers = {
+    'Cookie': 'q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0="AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938"; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t="2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==";z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0',
+    'Host': 'www.zhihu.com',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36',
+}
+r = requests.get("http://www.zhihu.com", headers=headers)
+print(r.text)
+```
+发现结果中包含了正常的登录信息。
+
+![](/assets/3-2-5.png)
+
+登录成功！
+
+当然也可以通过cookies参数来设置，不过这样就需要构造`RequestsCookieJar`对象，而且需要分割一下`Cookie`变量，相对繁琐，不过效果是相同的。
+
+```python
+import requests
+
+cookies = 'q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0="AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938"; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t="2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==";z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0'
+jar = requests.cookies.RequestsCookieJar()
+headers = {
+    'Host': 'www.zhihu.com',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
+}
+for cookie in cookies.split(';'):
+    key, value = cookie.split('=', 1)
+    jar.set(key, value)
+r = requests.get("http://www.zhihu.com", cookies=jar, headers=headers)
+print(r.text)
+```
+上面我们首先新建了一个`RequestCookieJar`对象，然后将复制下来的`Cookie`利用`split()`方法分割，利用`set()`方法设置好每一个`Cookie`的`key`和`value`，然后通过`requests.get()`方法的`cookies`参数设置这个``
+
+
 #### 设置超时
 
 ```python
