@@ -144,4 +144,49 @@ r = requests.get('http://httpbin.org/cookies')
 print(r.text)
 ```
 
+在实例中我们请求了一个测试网址，`http://httpbin.org/cookies/set/number/123456789`请求这个网址我们可以设置一`Cookie`，名称叫做`number`，内容是`123456789`，后面的网址`http://httpbin.org/cookies`可以获取当前的`Cookie`。
+
+你觉得这样能成功获取到设置的`Cookie`吗？试试看。
+
+运行结果如下：
+
+```python
+{
+  "cookies": {}
+}
+```
+
+喔并不行。那这时候我们想起刚才说的`Session`了，改成这个试试看：
+
+```python
+# coding=utf8
+import requests
+
+s = requests.Session()
+s.get('http://httpbin.org/cookies/set/number/123456789')
+r = s.get('http://httpbin.org/cookies')
+print(r.text)
+```
+
+这下呢？看下运行结果：
+
+```python
+{
+  "cookies": {
+    "number": "123456789"
+  }
+}
+```
+
+嗯，成功获取！这下能体会到同一个会话和不同会话的区别了吧？
+
+所以，利用`Session`我们可以做到模拟同一个会话，而且不用担心`Cookie`的问题，通常用于模拟登录成功之后再进行下一步的操作。
+
+
+
+
+
+
+
+
 
