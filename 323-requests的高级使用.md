@@ -17,6 +17,37 @@ print(r.text)
 
 运行结果如下：
 
+```
+{
+  "args": {}, 
+  "data": "", 
+  "files": {
+    "file": "data:application/octet-stream;base64,AAAAAA...="
+  }, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "6665", 
+    "Content-Type": "multipart/form-data; boundary=809f80b1a2974132b133ade1a8e8e058", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.10.0"
+  }, 
+  "json": null, 
+  "origin": "60.207.237.16", 
+  "url": "http://httpbin.org/post"
+}
+
+```
+
+以上部分内容省略，这个网站会返回一个响应，里面包含`files`这个字段，而`form`是空的，这证明文件上传部分，会单独有一个`files`来标识。
+
+#### Cookies处理
+
+在前面我们使用了`urllib`，让它处理`cookies`真的是挺麻烦的，而有了`requests`，获得和提交`cookies`只需要一步。
+
+
+
 
 #### 设置超时
 
