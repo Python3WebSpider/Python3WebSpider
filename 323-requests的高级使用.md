@@ -46,8 +46,29 @@ print(r.text)
 
 在前面我们使用了`urllib`，让它处理`cookies`真的是挺麻烦的，而有了`requests`，获得和提交`cookies`只需要一步。
 
+我们先用一个实例感受一下获取`Cookies`的过程：
 
+```python
 
+import requests
+
+r = requests.get("https://www.baidu.com")
+print(r.cookies)
+for key, value in r.cookies.items():
+    print(key + '=' + value)
+```
+
+运行结果如下：
+
+```
+<RequestsCookieJar[<Cookie BDORZ=27315 for .baidu.com/>, <Cookie __bsi=13533594356813414194_00_14_N_N_2_0303_C02F_N_N_N_0 for .www.baidu.com/>]>
+BDORZ=27315
+__bsi=13533594356813414194_00_14_N_N_2_0303_C02F_N_N_N_0
+```
+
+首先打印输出了`cookie`，可以发现它是一个`RequestCookieJar`类型。
+
+然后用`items()`方法将其转化为元组组成的列表，遍历输出每一个`cookie`的名和值。
 
 #### 设置超时
 
