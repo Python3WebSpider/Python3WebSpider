@@ -418,9 +418,5 @@ requests.get(url, auth=auth)
 
 更多详细的功能就可以参考`requests_oauthlib`的官方文档，在此就不再赘述了。
 
-
-
-
-
-
+好，以上便是`requests`的高级用法介绍，下面我们将介绍一个特殊的类，同时帮助大家更好地去理解`requests`的工作原理。
 
