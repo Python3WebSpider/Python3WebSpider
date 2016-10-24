@@ -390,9 +390,12 @@ r = requests.get('https://www.taobao.com', timeout=None)
 r = requests.get('https://www.taobao.com')
 ```
 
+#### 身份认证
 
+在访问网站时，我们可能会遇到这样的认证页面：
 
+![](/assets/3-2-7.png)
 
-
+如果遇到这样的网站验证，可以使用`requests`
 
 
