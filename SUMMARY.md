@@ -14,4 +14,5 @@
 * [3.2.1 安装requests](321-安装requests.md)
 * [3.2.2 requests的基本使用](322-requests的基本使用.md)
 * [3.2.3 requests的高级使用](323-requests的高级使用.md)
+* [3.2.4 requests的Request对象使用](324-requests的request对象使用.md)
 
