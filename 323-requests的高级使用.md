@@ -387,8 +387,16 @@ print(r.status_code)
 
 当然如果参数都传一个`HTTPBasicAuth`类，那的确太繁琐了，所以`requests`提供了一个简单的写法，你可以直接传一个元组，它会默认使用`HTTPBasicAuth`这个类来认证。
 
+所以上面的代码可以直接简写如下：
 
+```python
+import requests
 
+r = requests.get('http://120.27.34.24:9001', auth=('user', '123'))
+print(r.status_code)
+```
+
+运行效果和上面的是一样的。
 
 
 
