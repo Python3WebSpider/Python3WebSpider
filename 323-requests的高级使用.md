@@ -351,8 +351,6 @@ requests.get("https://www.taobao.com", proxies=proxies)
 
 设置超时时间需要用到`timeout`参数。这个时间的计算是发出`request`请求到服务器响应`response`的时间。
 
-`timeout`的单位是秒，如果不设置默认是`60`秒。
-
 下面用一个实例来感受一下：
 
 ```python
@@ -378,14 +376,19 @@ print(r.status_code)
 r = requests.get('https://www.taobao.com', timeout=(5,11, 30))
 ```
 
-如果想永久等待，那么你可以直接将`timeout`设置为`None`，那就慢慢等吧，等到天荒地老，看它什么时候响应。
+如果想永久等待，那么你可以直接将`timeout`设置为`None`，或者不设置，直接留空，因为默认是`None`。这样的话，如果服务器还在运行，但是响应特别慢，那就慢慢等吧，它永远不会返回超时错误的。
+
+用法如下：
 
 ```python
 r = requests.get('https://www.taobao.com', timeout=None)
 ```
 
+或直接不加参数：
 
-
+```python
+r = requests.get('https://www.taobao.com')
+```
 
 
 
