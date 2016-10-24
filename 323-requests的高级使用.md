@@ -398,6 +398,27 @@ print(r.status_code)
 
 运行效果和上面的是一样的。
 
+`requests`还提供了其他的认证方式，如`OAuth`认证，不过你需要安装`oauth`包。
+
+```
+pip3 install requests_oauthlib
+```
+
+使用`OAuth1`的方法如下：
+
+```python
+import requests
+from requests_oauthlib import OAuth1
+
+url = 'https://api.twitter.com/1.1/account/verify_credentials.json'
+auth = OAuth1('YOUR_APP_KEY', 'YOUR_APP_SECRET',
+              'USER_OAUTH_TOKEN', 'USER_OAUTH_TOKEN_SECRET')
+requests.get(url, auth=auth)
+```
+
+更多详细的功能就可以参考`requests_oauthlib`的官方文档，在此就不再赘述了。
+
+
 
 
 
