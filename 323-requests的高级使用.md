@@ -223,8 +223,52 @@ ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c
 
 所以如果我们请求一个`https`站点，但是证书验证错误的页面时，就会报这样的错误，那么如何避免这个错误呢？很简单，把`verify`这个参数设置为`False`即可。
 
+改成如下代码：
 
+```python
+# coding=utf-8
+import requests
 
+response = requests.get('https://www.12306.cn', verify=False)
+print(response.status_code)
+```
+
+这样，就会打印出请求成功的状态码。
+
+```
+/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py:821: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.org/en/latest/security.html
+  InsecureRequestWarning)
+200
+```
+
+不过发现报了一个警告，它提示建议让我们给它指定证书。
+
+当然你可以通过忽略警告的方式忽略警告：
+
+```python
+# coding=utf-8
+
+import requests
+from requests.packages import urllib3
+
+urllib3.disable_warnings()
+response = requests.get('https://www.12306.cn', verify=False)
+print(response.status_code)
+
+```
+或者通过捕获警告到日志的方式忽略警告：
+
+```python
+# coding=utf-8
+
+import logging
+import requests
+logging.captureWarnings(True)
+response = requests.get('https://www.12306.cn', verify=False)
+print(response.status_code)
+```
+
+不过这些都不是最好的方式，`https`协议的请求把证书验证都忽略了还有什么意义？
 
 
 
