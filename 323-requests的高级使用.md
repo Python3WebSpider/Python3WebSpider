@@ -188,7 +188,7 @@ print(r.text)
 
 `reqeusts`提供了证书验证的功能，当一个请求是`https`的时候，它会检查`SSL`证书，可以使用`verify`这个参数。其实如果不加的话默认是`True`，会自动验证的。
 
-现在以`12306`(https://www.12306.cn)为例来感受一下它的用法，我们现在访问它都可以看到一个证书问题的页面，如下：
+现在以`12306`( https://www.12306.cn )为例来感受一下它的用法，我们现在访问它都可以看到一个证书问题的页面，如下：
 
 
 ![](/assets/3-2-6.png)
@@ -221,7 +221,8 @@ ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c
 
 提示一个错误，叫做`SSLError`，证书验证错误。
 
-所以如果我们请求一个`https`站点，但是证书验证错误的页面时，默认会
+所以如果我们请求一个`https`站点，但是证书验证错误的页面时，就会报这样的错误，那么如何避免这个错误呢？很简单，把`verify`这个参数设置为`False`即可。
+
 
 
 
