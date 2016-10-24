@@ -377,8 +377,19 @@ r = requests.get('https://www.taobao.com')
 如果遇到这样的网站验证，可以使用`requests`带的身份认证功能。
 
 ```python
+import requests
+from requests.auth import HTTPBasicAuth
 
+r = requests.get('http://120.27.34.24:9001', auth=HTTPBasicAuth('user', '123'))
+print(r.status_code)
 ```
+如果用户名和密码正确的话，认证成功，那么运行结果会返回`200`，如果认证失败，则会返回`401`状态码。
+
+
+
+
+
+
 
 
 
