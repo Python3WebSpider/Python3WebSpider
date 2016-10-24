@@ -194,3 +194,42 @@ print(r.text)
 ![](/assets/3-2-6.png)
 
 需要我们点击高级，然后继续前往才能访问。
+
+现在我们用`requests`来测试一下：
+
+```python
+# coding=utf-8
+import requests
+
+response = requests.get('https://www.12306.cn')
+print(response.status_code)
+```
+
+运行结果如下：
+
+```
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 578, in urlopen
+    chunked=chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 351, in _make_request
+    self._validate_conn(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests/packages/urllib3/connectionpool.py", line 814, in _validate_conn
+    conn.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests/packages/urllib3/connection.py", line 289, in connect
+    ssl_version=resolved_ssl_version)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests/packages/urllib3/util/ssl_.py", line 308, in ssl_wrap_socket
+    return context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ssl.py", line 376, in wrap_socket
+    _context=self)
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ssl.py", line 747, in __init__
+    self.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ssl.py", line 983, in do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/ssl.py", line 628, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:645)
+```
+
+
+
+
