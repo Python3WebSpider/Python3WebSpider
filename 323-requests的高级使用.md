@@ -99,7 +99,6 @@ print(r.text)
 当然也可以通过cookies参数来设置，不过这样就需要构造`RequestsCookieJar`对象，而且需要分割一下`Cookie`变量，相对繁琐，不过效果是相同的。
 
 ```python
-# coding=utf-8
 import requests
 
 cookies = 'q_c1=31653b264a074fc9a57816d1ea93ed8b|1474273938000|1474273938000; d_c0="AGDAs254kAqPTr6NW1U3XTLFzKhMPQ6H_nc=|1474273938"; __utmv=51854390.100-1|2=registration_date=20130902=1^3=entry_date=20130902=1;a_t="2.0AACAfbwdAAAXAAAAso0QWAAAgH28HQAAAGDAs254kAoXAAAAYQJVTQ4FCVgA360us8BAklzLYNEHUd6kmHtRQX5a6hiZxKCynnycerLQ3gIkoJLOCQ==";z_c0=Mi4wQUFDQWZid2RBQUFBWU1DemJuaVFDaGNBQUFCaEFsVk5EZ1VKV0FEZnJTNnp3RUNTWE10ZzBRZFIzcVNZZTFGQmZn|1474887858|64b4d4234a21de774c42c837fe0b672fdb5763b0'
@@ -133,7 +132,6 @@ print(r.text)
 下面用一个实例来感受一下：
 
 ```python
-# coding=utf-8
 import requests
 
 requests.get('http://httpbin.org/cookies/set/number/123456789')
@@ -156,7 +154,6 @@ print(r.text)
 喔并不行。那这时候我们想起刚才说的`Session`了，改成这个试试看：
 
 ```python
-# coding=utf-8
 import requests
 
 s = requests.Session()
@@ -195,7 +192,6 @@ print(r.text)
 现在我们用`requests`来测试一下：
 
 ```python
-# coding=utf-8
 import requests
 
 response = requests.get('https://www.12306.cn')
@@ -223,7 +219,6 @@ ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c
 改成如下代码：
 
 ```python
-# coding=utf-8
 import requests
 
 response = requests.get('https://www.12306.cn', verify=False)
@@ -243,8 +238,6 @@ print(response.status_code)
 当然你可以通过忽略警告的方式忽略警告：
 
 ```python
-# coding=utf-8
-
 import requests
 from requests.packages import urllib3
 
@@ -256,8 +249,6 @@ print(response.status_code)
 或者通过捕获警告到日志的方式忽略警告：
 
 ```python
-# coding=utf-8
-
 import logging
 import requests
 logging.captureWarnings(True)
@@ -270,8 +261,6 @@ print(response.status_code)
 你也可以指定一个本地证书用作客户端证书，可以是单个文件（包含密钥和证书）或一个包含两个文件路径的元组。
 
 ```python
-# coding=utf-8
-
 import requests
 
 response = requests.get('https://www.12306.cn', cert=('/path/server.crt', '/path/key'))
@@ -289,8 +278,6 @@ print(response.status_code)
 用这样的方式设置：
 
 ```python
-# coding=utf-8
-
 import requests
 
 proxies = {
@@ -308,8 +295,6 @@ requests.get("https://www.taobao.com", proxies=proxies)
 用法如下：
 
 ```python
-# coding=utf-8
-
 import requests
 
 proxies = {
@@ -330,8 +315,6 @@ pip3 install 'requests[socks]'
 然后就可以使用`SOCKS`协议代理了。
 
 ```python
-# coding=utf-8
-
 import requests
 
 proxies = {
@@ -351,8 +334,6 @@ requests.get("https://www.taobao.com", proxies=proxies)
 下面用一个实例来感受一下：
 
 ```python
-# coding=utf-8
-
 import requests
 
 r = requests.get("https://www.taobao.com", timeout = 1)
