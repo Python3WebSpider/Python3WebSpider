@@ -378,7 +378,11 @@ print(r.status_code)
 r = requests.get('https://www.taobao.com', timeout=(5,11, 30))
 ```
 
+如果想永久等待，那么你可以直接将`timeout`设置为`None`，那就慢慢等吧，等到天荒地老，看它什么时候响应。
 
+```python
+r = requests.get('https://www.taobao.com', timeout=None)
+```
 
 
 
