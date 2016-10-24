@@ -351,6 +351,33 @@ requests.get("https://www.taobao.com", proxies=proxies)
 
 设置超时时间需要用到`timeout`参数。这个时间的计算是发出`request`请求到服务器响应`response`的时间。
 
+`timeout`的单位是秒，如果不设置默认是`60`秒。
+
+下面用一个实例来感受一下：
+
+```python
+# coding=utf-8
+
+import requests
+
+response = requests.get("https://www.taobao.com", timeout = 1)
+print(response.status_code)
+```
+
+通过这样的方式，我们可以将超时时间设置为`1`秒，如果`1`秒内没有响应，那就抛出异常。
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
