@@ -270,6 +270,21 @@ print(response.status_code)
 
 不过这些都不是最好的方式，`https`协议的请求把证书验证都忽略了还有什么意义？
 
+你也可以指定一个本地证书用作客户端证书，可以是单个文件（包含密钥和证书）或一个包含两个文件路径的元组。
+
+```python
+# coding=utf-8
+
+import requests
+
+response = requests.get('https://www.12306.cn', cert=('/path/server.crt', '/path/key'))
+print(response.status_code)
+```
+
+当然上面代码是实例，你需要有`crt`和`key`文件，指定它们的路径。注意本地私有证书的`key`必须要是解密状态，加密状态的`key`是不支持的。
+
+
+
 
 
 
