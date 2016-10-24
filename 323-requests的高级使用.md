@@ -219,6 +219,12 @@ Traceback (most recent call last):
 ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:645)
 ```
 
+提示一个错误，叫做`SSLError`，证书验证错误。
+
+所以如果我们请求一个`https`站点，但是证书验证错误的页面时，默认会
+
+
+
 
 
 
