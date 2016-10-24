@@ -7,7 +7,6 @@
 用一个实例来感受一下：
 
 ```python
-# coding=utf-8
 import requests
 
 files = {'file': open('favicon.ico', 'rb')}
@@ -50,7 +49,6 @@ print(r.text)
 我们先用一个实例感受一下获取`Cookie`的过程：
 
 ```python
-# coding=utf-8
 import requests
 
 r = requests.get("https://www.baidu.com")
@@ -82,7 +80,6 @@ __bsi=13533594356813414194_00_14_N_N_2_0303_C02F_N_N_N_0
 将其设置到`headers`里面，发送请求：
 
 ```python
-# coding=utf-8
 import requests
 
 headers = {
@@ -396,6 +393,11 @@ r = requests.get('https://www.taobao.com')
 
 ![](/assets/3-2-7.png)
 
-如果遇到这样的网站验证，可以使用`requests`
+如果遇到这样的网站验证，可以使用`requests`带的身份认证功能。
+
+```python
+
+```
+
 
 
