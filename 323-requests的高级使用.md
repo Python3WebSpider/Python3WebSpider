@@ -43,11 +43,11 @@ print(r.text)
 
 以上部分内容省略，这个网站会返回一个响应，里面包含`files`这个字段，而`form`是空的，这证明文件上传部分，会单独有一个`files`来标识。
 
-#### Cookies处理
+#### Cookie处理
 
-在前面我们使用了`urllib`，让它处理`cookies`真的是挺麻烦的，而有了`requests`，获得和提交`cookies`只需要一步。
+在前面我们使用了`urllib`，让它处理`cookie`真的是挺麻烦的，而有了`requests`，获得和提交`cookies`只需要一步。
 
-我们先用一个实例感受一下获取`Cookies`的过程：
+我们先用一个实例感受一下获取`Cookie`的过程：
 
 ```python
 # coding=utf-8

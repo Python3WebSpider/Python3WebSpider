@@ -55,7 +55,7 @@ r = requests.head('http://httpbin.org/get')
 r = requests.options('http://httpbin.org/get')
 ```
 
-怎么样？是不是比`urllib`太多了？
+怎么样？是不是比`urllib`简单太多了？
 
 其实这只是冰山一角，更多的还在后面呢。
 
