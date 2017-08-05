@@ -1,4 +1,3 @@
-
 # JavaScript渲染采集
 
 经常我们会发现，直接用urllib或requests请求某个网页，比如淘宝，得到的内容其实并不是浏览器看到的那样，有些信息在源代码里面是找不到的。那么这种网页就是JavaScript渲染的网页，requests得到的内容其实只是最原始的文档，文档中包含了一些JavaScript链接，JavaScript运行后再更改网页的DOM结构，网页就重新被渲染了，我们在浏览器里看到的内容实际上是JavaScript渲染之后的结果，而用urllib或requests请求得到的结果则是渲染之前的结果。
