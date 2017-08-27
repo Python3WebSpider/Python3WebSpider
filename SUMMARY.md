@@ -114,7 +114,7 @@
 * [13.1-Scrapy框架介绍](13.1-Scrapy框架介绍.md)
 * [13.2-Scrapy入门](13.2-Scrapy入门.md)
 * [13.3-Selector的用法](13.3-Selector的用法.md)
-* [13.4-Spider的用法.md](13.4-Spider的用法.md)
+* [13.4-Spider的用法](13.4-Spider的用法.md)
 * [13.5-Doanloader Middleware的用法](13.5-Doanloader Middleware的用法.md)
 * [13.6-Spider Middleware的用法](13.6-Spider Middleware的用法.md)
 * [13.7-Item Pipeline的用法](13.7-Item Pipeline的用法.md)
@@ -124,8 +124,8 @@
 * [13.11-Scrapyrt的使用](13.11-Scrapyrt的使用.md)
 * [13.12-Scrapy对接Docker](13.12-Scrapy对接Docker.md)
 * [13.13-Scrapy爬取新浪微博](13.13-Scrapy爬取新浪微博.md)
-* [第十四章 分布式爬虫.md](14-分布式爬虫.md)
-* [14.1-分布式爬虫理念.md](14.1-分布式爬虫理念.md)
+* [第十四章 分布式爬虫](14-分布式爬虫.md)
+* [14.1-分布式爬虫理念](14.1-分布式爬虫理念.md)
 * [14.2-ScrapyRedis源码解析](14.2-ScrapyRedis源码解析.md)
 * [14.3-Scrapy分布式实现](14.3-Scrapy分布式实现.md)
 * [14.4-BloomFilter的对接](14.4-BloomFilter的对接.md)
@@ -135,5 +135,3 @@
 * [15.3-Scrapyd对接的Docker](15.3-Scrapyd对接的Docker.md)
 * [15.4-Scrapyd批量部署](15.4-Scrapyd批量部署.md)
 * [15.5-Gerapy分布式管理](15.5-Gerapy分布式管理.md)
-
-
