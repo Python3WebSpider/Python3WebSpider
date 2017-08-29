@@ -6,5 +6,5 @@
 
 本书由图灵教育-人民邮电出版社出版发行。
 
-作者：崔庆才  个人博客：[http://cuiqingcai.com](http://cuiqingcai.com)
+作者：崔庆才  个人博客：[cuiqingcai.com](http://cuiqingcai.com)
 
