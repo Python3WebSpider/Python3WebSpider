@@ -16,6 +16,4 @@
 
 [自己动手，丰衣足食！Python3网络爬虫实战案例](https://edu.hellobi.com/course/157)
 
-<<<<<<< HEAD
 
-![](./assets/网格爬虫实战-效果图.jpg)
