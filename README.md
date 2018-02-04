@@ -1,4 +1,4 @@
-# Python3网络爬虫实战
+# Python3网络爬虫开发实战
 
 本书通过多个实战案例详细介绍了 Python3 网络爬虫的知识。
 
@@ -15,6 +15,10 @@
 [Python3爬虫三大案例实战分享](https://edu.hellobi.com/course/156) 
 
 [自己动手，丰衣足食！Python3网络爬虫实战案例](https://edu.hellobi.com/course/157)
+
+
+![](./assets/网格爬虫实战-效果图.jpg)
+
 
 
 
