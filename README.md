@@ -8,9 +8,9 @@
 
 预售地址：[https://item.jd.com/26124473455.html](https://item.jd.com/26124473455.html)
 
-个人博客：[cuiqingcai.com](http://cuiqingcai.com)
+个人博客：[cuiqingcai.com](https://cuiqingcai.com)
 
-技术交流：[cuiqingcai.com/exchange](http://cuiqingcai.com/exchange)
+技术交流：[cuiqingcai.com/exchange](https://cuiqingcai.com/exchange)
 
 视频资源：
 
