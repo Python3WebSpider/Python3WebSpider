@@ -9,9 +9,8 @@
 
 ![](./assets/Python-3网格爬虫开发实战-立体图-857x1100.jpg)
 
-预售地址：
-* [https://item.jd.com/26114674847.html](https://item.jd.com/26114674847.html) 
-* [https://item.jd.com/26124473455.html](https://item.jd.com/26124473455.html)
+购买地址：
+* [https://item.jd.com/12333540.html](https://item.jd.com/12333540.html) 
 
 个人博客：[cuiqingcai.com](https://cuiqingcai.com)
 
