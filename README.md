@@ -7,7 +7,7 @@
 
 作者：崔庆才
 
-![](./assets/Python-3网格爬虫开发实战-立体图-857x1100.jpg)
+![](./assets/封面图.jpg)
 
 购买地址：
 * [https://item.jd.com/12333540.html](https://item.jd.com/12333540.html) 
