@@ -12,9 +12,9 @@
 购买地址：
 * [https://item.jd.com/12333540.html](https://item.jd.com/12333540.html) 
 
-个人博客：[cuiqingcai.com](https://cuiqingcai.com)
+加读者群：
 
-技术交流：[cuiqingcai.com/exchange](https://cuiqingcai.com/exchange)
+![](http://qiniu.cuiqingcai.com/wp-content/uploads/2017/05/qrcode_for_gh_5b0546ddd2d0_430.jpg)
 
 视频资源：
 
